@@ -23,7 +23,7 @@ T2CONbits.TON = 1; // Start 32-bit Timer
 //Interruption du timer 32 bits sur 2-3
 void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void) {
 IFS0bits.T3IF = 0; // Clear Timer3 Interrupt Flag
-LED_ORANGE = !LED_ORANGE;
+LED_ORANGE_1 = !LED_ORANGE_1;
 }
 
 //Initialisation d?un timer 16 bits
@@ -48,5 +48,5 @@ T1CONbits.TON = 1; // Enable Timer
 void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void)
 {
 IFS0bits.T1IF = 0;
-LED_BLANCHE = !LED_BLANCHE;
+LED_BLANCHE_1 = !LED_BLANCHE_1;
 }
