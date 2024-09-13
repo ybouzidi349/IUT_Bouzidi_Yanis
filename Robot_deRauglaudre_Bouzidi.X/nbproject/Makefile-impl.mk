@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Robot_Bouzidi_deRauglaudre.X
+PROJECTNAME=Robot_deRauglaudre_Bouzidi.X
 
 # Active Configuration
 DEFAULTCONF=default
