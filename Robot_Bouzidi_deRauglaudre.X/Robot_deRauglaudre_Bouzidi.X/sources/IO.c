@@ -1,11 +1,5 @@
-#include "headers/ChipConfig.h"
-#include "headers/IO.h"
-#include "headers/timer.h"
-#include "headers/PWM.h"
-#include "headers/Toolbox.h"
-#include "headers/Robot.h"
-
 #include <xc.h>
+#include "../headers/IO.h"
 
 void InitIO()
 {
@@ -22,16 +16,11 @@ void InitIO()
     // Configuration des sorties
 
     //******* LED ***************************
-    _TRISJ6 = 0;  // LED Blanche
-    _TRISJ5 = 0; //LED   Bleue
-    _TRISJ4 = 0; // LED ORange
+    _TRISJ6 = 0;  // LED Orange
+    _TRISJ5 = 0; //LED Blanche
+    _TRISJ4 = 0; // LED Bleue
     _TRISJ11 = 0; // LED Rouge
     _TRISH10 = 0; // LED Verte 
-    _TRISA0 = 0;  // LED Blanche 2
-    _TRISA9 = 0; //LED   Bleue 2
-    _TRISK15 = 0; // LED ORange 2
-    _TRISA10 = 0; // LED Rouge 2
-    _TRISH3 = 0; // LED Verte 2 
     
 
     

@@ -1,11 +1,11 @@
 #include <xc.h>
 
-#include "headers/ChipConfig.h"
-#include "headers/IO.h"
-#include "headers/timer.h"
-#include "headers/PWM.h"
-#include "headers/Toolbox.h"
-#include "headers/Robot.h"
+#include "../headers/ChipConfig.h"
+#include "../headers//IO.h"
+#include "../headers/timer.h"
+#include "../headers/PWM.h"
+#include "../headers/Toolbox.h"
+#include "../headers/Robot.h"
 
 //Initialisation d?un timer 16 bits
 void InitTimer1(void) {
@@ -50,7 +50,7 @@ T2CONbits.TCS = 0; // Select internal instruction cycle clock
 T2CONbits.TCKPS = 0b00; // Select 1:1 Prescaler
 TMR3 = 0x00; // Clear 32-bit Timer (msw)
 TMR2 = 0x00; // Clear 32-bit Timer (lsw)
-PR3 = 0x1F3; // Load 32-bit period value (msw)
+PR3 = 0x726; // Load 32-bit period value (msw)
 PR2 = 0xFFFF; // Load 32-bit period value (lsw)
 IPC2bits.T3IP = 0x01; // Set Timer3 Interrupt Priority Level
 IFS0bits.T3IF = 0; // Clear Timer3 Interrupt Flag

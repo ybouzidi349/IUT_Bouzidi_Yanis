@@ -1,9 +1,4 @@
-#include "headers/ChipConfig.h"
-#include "headers/IO.h"
-#include "headers/timer.h"
-#include "headers/PWM.h"
-#include "headers/Toolbox.h"
-#include "headers/Robot.h"
+#include "../headers/ChipConfig.h"
 
 // DSPIC33EP512MU814 Configuration Bit Settings
 

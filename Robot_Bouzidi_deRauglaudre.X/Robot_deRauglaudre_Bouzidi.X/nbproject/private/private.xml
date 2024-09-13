@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/bosco/Documents/Geii_Robot/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/ChipConfig.c</file>
-            <file>file:/home/bosco/Documents/Geii_Robot/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/Toolbox.h</file>
-            <file>file:/home/bosco/Documents/Geii_Robot/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/IO.c</file>
-            <file>file:/home/bosco/Documents/Geii_Robot/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/timer.c</file>
-            <file>file:/home/bosco/Documents/Geii_Robot/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/Robot.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/IO.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/ChipConfig.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/PWM.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/main.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/timer.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/ChipConfig.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/Toolbox.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/PWM.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/Robot.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/IO.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/headers/Robot.h</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/ToulBox.c</file>
+            <file>file:/C:/GitHub/IUT_Bouzidi_Yanis/Robot_Bouzidi_deRauglaudre.X/Robot_deRauglaudre_Bouzidi.X/sources/timer.c</file>
         </group>
     </open-files>
 </project-private>

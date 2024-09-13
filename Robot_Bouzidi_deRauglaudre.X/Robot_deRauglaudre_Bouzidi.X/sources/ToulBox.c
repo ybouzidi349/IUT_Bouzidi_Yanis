@@ -1,10 +1,9 @@
-#include "headers/ChipConfig.h"
-#include "headers/IO.h"
-#include "headers/timer.h"
-#include "headers/PWM.h"
-#include "headers/Toolbox.h"
-#include "headers/Robot.h"
-
+#include "../headers/ChipConfig.h"
+#include "../headers/IO.h"
+#include "../headers/timer.h"
+#include "../headers/PWM.h"
+#include "../headers/Toolbox.h"
+#include "../headers/Robot.h"
 float Abs(float value)
 {
     if (value >= 0)

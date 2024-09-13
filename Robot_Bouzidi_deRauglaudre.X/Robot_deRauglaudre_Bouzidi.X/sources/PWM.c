@@ -1,9 +1,11 @@
-#include "headers/ChipConfig.h"
-#include "headers/IO.h"
-#include "headers/timer.h"
-#include "headers/PWM.h"
-#include "headers/Toolbox.h"
-#include "headers/Robot.h"
+#include "../headers/ChipConfig.h"
+#include "../headers/IO.h"
+#include "../headers/timer.h"
+#include "../headers/PWM.h"
+#include "../headers/Toolbox.h"
+#include "../headers/Robot.h"
+
+#include<xc.h>
 
 #define PWMPER 24.0
 
@@ -29,4 +31,6 @@ void PWMSetSpeed(float vitesseEnPourcents)
 {
 PDC1 = talon;
 SDC1 = vitesseEnPourcents * PWMPER + talon;
+PDC2 = talon;
+SDC2 = vitesseEnPourcents * PWMPER + talon;
 }
