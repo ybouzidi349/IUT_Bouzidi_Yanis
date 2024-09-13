@@ -1,24 +1,21 @@
-Microchip Technology Inc, v2.10 (B)
+Microchip Technology Inc, v2.10 (A)
 
 Tool Name:
-  c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
+  /opt/microchip/xc16/v2.10/bin/bin/../bin/elf-ld
 
 Command:
   -p33EP512MU814 \
-  --mdfp=C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.5.258/xc16 \
   -o \
   dist/default/production/Robot_deRauglaudre_Bouzidi.X.production.elf \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/.. \
-  -LC:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.5.258/xc16/bin/../support/PIC24E/gld \
-  -LC:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.5.258/xc16/bin/../support/dsPIC33E/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../lib \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24E/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24F/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/PIC24H/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC30F/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33C/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33E/gld \
-  -Lc:/program files/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/.. \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../lib \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/PIC24E/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/PIC24F/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/PIC24H/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/dsPIC30F/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33C/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33E/gld \
+  -L/opt/microchip/xc16/v2.10/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/main.o \
   build/default/production/ChipConfig.o \
   build/default/production/IO.o \
@@ -50,11 +47,11 @@ Command:
 Optional library libp33EP512MU814.a not found
 Archive member included because of file (symbol)
 
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extendedep.o)
+/opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt0_extendedep.o)
                               (__resetPRI)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_extended.o)
-                              c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extendedep.o) (__data_init_extended)
-c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalep.Meo)
+/opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(data_init_extended.o)
+                              /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt0_extendedep.o) (__data_init_extended)
+/opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt_start_mode_normalep.Meo)
                               (__crt_start_mode_normal)
 
 
@@ -74,7 +71,7 @@ CodeGuard RAM Memory:
   boot    (none)
 
 
-xc16-ld 2.10 (B)
+xc16-ld 2.10 (A)
 
 Default Code Model: Small
 Default Data Model: Large
@@ -122,8 +119,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000248                  __data_init
                   0x000248                  __data_init_extended
+                  0x000248                  __data_init
                   0x0002fa                  __DefaultInterrupt
                   0x000300                  _InitOscillator
                   0x000396                  _InitIO
@@ -146,9 +143,9 @@ External Symbols in Program Memory (by name):
                   0x000200                  __resetPRI
                   0x0003e4                  _main
 
-Memory Configuration
+Configuration m√©moire
 
-Name             Origin             Length             Attributes
+Nom              Origine            Longueur           Attributs
 data             0x001000           0x00d000           a !xr
 reset            0x000000           0x000004  
 ivt              0x000004           0x0001fc  
@@ -162,16 +159,16 @@ FPOR             0xf8000c           0x000002
 FICD             0xf8000e           0x000002  
 FAS              0xf80010           0x000002  
 FUID0            0xf80012           0x000002  
-*default*        0x000000           0xffffffff  
+*default*        0x000000           0xffffffffffffffff  
 
-Linker script and memory map
+Script de l'√©diteurs de liens and table de projection m√©moire
 
 LOAD build/default/production/main.o
 LOAD build/default/production/ChipConfig.o
 LOAD build/default/production/IO.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD p33EP512MU814
-LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
+LOAD /opt/microchip/xc16/v2.10/bin/bin/../../lib/libfx-elf.a
                     0xf80004                  __FGS = 0xf80004
                     0xf80006                  __FOSCSEL = 0xf80006
                     0xf80008                  __FOSC = 0xf80008
@@ -198,13 +195,13 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
 
 .text             0x000200        0x100
  *(.init)
- .init            0x000200         0x48 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extendedep.o)
-                  0x000200                  __resetPRI
+ .init            0x000200         0x48 /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt0_extendedep.o)
                   0x000200                  __reset
+                  0x000200                  __resetPRI
                   0x00023c                  __psv_init
- .init            0x000248         0xb2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_extended.o)
-                  0x000248                  __data_init
+ .init            0x000248         0xb2 /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(data_init_extended.o)
                   0x000248                  __data_init_extended
+                  0x000248                  __data_init
  *(.user_init)
  *(.handle)
  *(.isr*)
@@ -215,16 +212,16 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x0002fe          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normalep.Meo)
-                  0x0002fe                  __crt_start_mode
+                  0x0002fe          0x2 /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt_start_mode_normalep.Meo)
                   0x0002fe                  __crt_start_mode_normal
+                  0x0002fe                  __crt_start_mode
 
 usercode
  *(usercode)
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGS∞]’
+ __FGS.sec        0xf80004          0x2 /CW/_FGSxÓ·X
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -251,11 +248,11 @@ __FUID0
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x18be
+.debug_info       0x000000       0x18cd
  *(.debug_info)
- .debug_info      0x000000        0x6b5 build/default/production/main.o
- .debug_info      0x0006b5        0xa49 build/default/production/ChipConfig.o
- .debug_info      0x0010fe        0x7c0 build/default/production/IO.o
+ .debug_info      0x000000        0x6ba build/default/production/main.o
+ .debug_info      0x0006ba        0xa4e build/default/production/ChipConfig.o
+ .debug_info      0x001108        0x7c5 build/default/production/IO.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x1e8
@@ -264,11 +261,11 @@ __FUID0
  .debug_abbrev    0x00008c         0xc3 build/default/production/ChipConfig.o
  .debug_abbrev    0x00014f         0x99 build/default/production/IO.o
 
-.debug_line       0x000000        0x366
+.debug_line       0x000000        0x282
  *(.debug_line)
- .debug_line      0x000000        0x11d build/default/production/main.o
- .debug_line      0x00011d        0x127 build/default/production/ChipConfig.o
- .debug_line      0x000244        0x122 build/default/production/IO.o
+ .debug_line      0x000000         0xd1 build/default/production/main.o
+ .debug_line      0x0000d1         0xdb build/default/production/ChipConfig.o
+ .debug_line      0x0001ac         0xd6 build/default/production/IO.o
 
 .debug_frame      0x000000         0xbe
  *(.debug_frame)
@@ -3117,12 +3114,12 @@ __FUID0
                     0x02b0                  UART4 = 0x2b0
                     0x02b0                  _UART4 = 0x2b0
 START GROUP
-LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a
-LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
-LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
+LOAD /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a
+LOAD /opt/microchip/xc16/v2.10/bin/bin/../../lib/libm-elf.a
+LOAD /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-elf.a
 END GROUP
 OUTPUT(dist/default/production/Robot_deRauglaudre_Bouzidi.X.production.elf elf32-pic30)
-LOAD /CW/_FGS∞]’
+LOAD /CW/_FGSxÓ·X
 LOAD default_isr
 
 .debug_pubtypes
@@ -3143,9 +3140,9 @@ __c30_signature
  __c30_signature
                   0x00026f          0x6 build/default/production/IO.o
  __c30_signature
-                  0x000275          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_extendedep.o)
+                  0x000275          0x6 /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x00027b          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_extended.o)
+                  0x00027b          0x6 /opt/microchip/xc16/v2.10/bin/bin/../../lib/libc99-pic30-elf.a(data_init_extended.o)
 
 .config_APLK      0xf80010          0x2
  .config_APLK     0xf80010          0x2 build/default/production/ChipConfig.o
