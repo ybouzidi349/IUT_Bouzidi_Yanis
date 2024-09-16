@@ -10,13 +10,14 @@
 
 int main(void) {
 
-
+    
     InitOscillator();
+    InitIO();
     InitTimer1();
     InitTimer23();
+    InitPWM();
     InitADC1();
 
-    InitIO();
     
     LED_BLANCHE_1= 1;
     LED_ORANGE_1 = 1;
@@ -29,17 +30,11 @@ int main(void) {
     LED_ROUGE_2 = 1;
     LED_VERTE_2 = 1;
 
-    //InitPWM();
+   
     //PWMSetSpeedConsigne(50, MOTEUR_GAUCHE);
     //PWMSetSpeedConsigne(50, MOTEUR_DROIT);
 
     while (1) {
-        /*if (ADCIsConversionFinished())
-        {
-            ADCClearConversionFinishedFlag();
-            unsigned int * result = ADCGetResult();
-            int capteur1 = result[0];
-        }*/
         
     }
 }
