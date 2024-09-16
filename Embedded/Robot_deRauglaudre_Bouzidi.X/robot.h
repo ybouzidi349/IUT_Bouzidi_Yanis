@@ -10,6 +10,15 @@ struct {
         float vitesseGaucheCommandeCourante;
         float vitesseDroiteConsigne;
         float vitesseDroiteCommandeCourante;
+        
+        //float distanceTelemetreExtDroite;
+        float distanceTelemetreDroite;
+        
+        //float distanceTelemetreExtGauche;
+        float distanceTelemetreGauche;
+        
+        float distanceTelemetreCentre;
+        
         };
     };
 } ROBOT_STATE_BITS;
