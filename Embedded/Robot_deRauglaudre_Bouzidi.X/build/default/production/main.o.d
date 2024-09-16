@@ -1,4 +1,4 @@
-build/default/production/main.o: main.c ChipConfig.h IO.h timer.h \
+build/default/production/main.o: main.c ChipConfig.h IO.h timer.h ADC.h \
  Toolbox.h PWM.h
 
 ChipConfig.h:
@@ -6,6 +6,8 @@ ChipConfig.h:
 IO.h:
 
 timer.h:
+
+ADC.h:
 
 Toolbox.h:
 

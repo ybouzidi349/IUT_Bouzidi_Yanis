@@ -1,5 +1,8 @@
 #include <xc.h>
-#include "adc.h"
+#include "ADC.h"
+#include "ChipConfig.h"
+#include "IO.h"
+
 unsigned char ADCResultIndex = 0;
 static unsigned int ADCResult[5];
 unsigned char ADCConversionFinishedFlag;
@@ -44,6 +47,7 @@ void InitADC1() {
     ANSELBbits.ANSB8 = 1;
     ANSELBbits.ANSB9 = 1;
     ANSELBbits.ANSB10 = 1;
+    
     AD1CSSLbits.CSS8 = 1; // Enable AN8 for scan
     AD1CSSLbits.CSS9 = 1; // Enable AN9 for scan
     AD1CSSLbits.CSS10 = 1; // Enable AN10 for scan

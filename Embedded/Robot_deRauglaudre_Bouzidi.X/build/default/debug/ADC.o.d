@@ -1,3 +1,7 @@
-build/default/debug/ADC.o: ADC.c adc.h
+build/default/debug/ADC.o: ADC.c ADC.h ChipConfig.h IO.h
 
-adc.h:
+ADC.h:
+
+ChipConfig.h:
+
+IO.h:

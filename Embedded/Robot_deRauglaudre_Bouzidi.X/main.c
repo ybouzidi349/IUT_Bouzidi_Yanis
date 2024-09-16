@@ -4,6 +4,7 @@
 #include "ChipConfig.h"
 #include "IO.h"
 #include "timer.h"
+#include "ADC.h"
 #include "Toolbox.h"
 #include "PWM.h"
 
@@ -13,6 +14,7 @@ int main(void) {
     InitOscillator();
     InitTimer1();
     InitTimer23();
+    InitADC1();
 
     InitIO();
     
@@ -27,12 +29,17 @@ int main(void) {
     LED_ROUGE_2 = 1;
     LED_VERTE_2 = 1;
 
-    InitPWM();
+    //InitPWM();
     //PWMSetSpeedConsigne(50, MOTEUR_GAUCHE);
     //PWMSetSpeedConsigne(50, MOTEUR_DROIT);
 
-
     while (1) {
+        /*if (ADCIsConversionFinished())
+        {
+            ADCClearConversionFinishedFlag();
+            unsigned int * result = ADCGetResult();
+            int capteur1 = result[0];
+        }*/
         
     }
 }
