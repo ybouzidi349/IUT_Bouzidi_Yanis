@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/Robot_deRauglaudre_Bouzidi.X.production.elf">
+  <executable name="dist/default/debug/Robot_deRauglaudre_Bouzidi.X.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>53248</length>
-      <used>30</used>
-      <free>53218</free>
+      <used>122</used>
+      <free>53126</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>524544</length>
-      <used>5004</used>
-      <free>519540</free>
+      <used>5256</used>
+      <free>519288</free>
     </memory>
   </executable>
 </project>

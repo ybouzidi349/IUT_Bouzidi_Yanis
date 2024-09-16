@@ -9,22 +9,15 @@
 
 int main(void) {
 
-    //Initialisation oscillateur
 
     InitOscillator();
+    InitTimer1();
+    InitTimer23();
 
-
-    //InitTimer1();
-    //InitTimer23();
-   // InitPWM();
-    //PWMSetSpeed(10, MOTEUR_DROIT);
-   // PWMSetSpeed(-10, MOTEUR_GAUCHE);
-    
-    
-
-    // Configuration des input et output (IO)
     InitIO();
-
+    
+    LED_BLANCHE_1= 1;
+    LED_ORANGE_1 = 1;
     LED_BLEUE_1 = 1;
     LED_ROUGE_1 = 1;
     LED_VERTE_1 = 1;
@@ -35,13 +28,12 @@ int main(void) {
     LED_VERTE_2 = 1;
 
     InitPWM();
-    PWMSetSpeed(-20);
-    // Boucle Principale
+    //PWMSetSpeedConsigne(50, MOTEUR_GAUCHE);
+    //PWMSetSpeedConsigne(50, MOTEUR_DROIT);
+
 
     while (1) {
         
-          
-        //LED_BLANCHE_1 = !LED_BLANCHE_1;
-    } // fin main
+    }
 }
 
