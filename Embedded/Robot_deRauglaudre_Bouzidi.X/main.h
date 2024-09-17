@@ -8,12 +8,7 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-#include <xc.h>
-#include "timer.h"
-#include "IO.h"
-#include "PWM.h"
-#include "ADC.h"
-
+#define FCY 60000000
 
 #endif
 

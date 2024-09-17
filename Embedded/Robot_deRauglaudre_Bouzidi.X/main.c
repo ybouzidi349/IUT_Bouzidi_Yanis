@@ -7,17 +7,17 @@
 #include "ADC.h"
 #include "Toolbox.h"
 #include "PWM.h"
+#include "main.h"
 
 int main(void) {
-
 
     InitOscillator();
     InitIO();
     InitTimer1();
+    // InitTimer4();
     InitTimer23();
     InitPWM();
     InitADC1();
-
 
     LED_BLANCHE_1 = 1;
     LED_ORANGE_1 = 1;
@@ -35,7 +35,7 @@ int main(void) {
     //PWMSetSpeedConsigne(50, MOTEUR_DROIT);
 
     while (1) {
-
+        /*
         if (ADCIsConversionFinished() == 1) {
             ADCClearConversionFinishedFlag();
             unsigned int * result = ADCGetResult();
@@ -46,6 +46,7 @@ int main(void) {
             volts = ((float) result [2])* 3.3 / 4096;
             robotState.distanceTelemetreDroit = 34 / volts - 5;
         }
+         */
 
     }
 }
