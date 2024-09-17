@@ -1,8 +1,4 @@
-#include <xc.h>
-#include "timer.h"
-#include "IO.h"
-#include "PWM.h"
-#include "ADC.h"
+#include "main.h"
 
 unsigned char toggle = 0;
 
@@ -26,6 +22,23 @@ void InitTimer23(void) {
 }
 
 //Interruption du timer 32 bits sur 2-3
+
+void SetFreqTimer1(float freq) {
+    T1CONbits.TCKPS = 0b00; //00 = 1:1 prescaler value
+    if (FCY / freq > 65535) {
+        T1CONbits.TCKPS = 0b01; //01 = 1:8 prescaler value
+        if (FCY / freq / 8 > 65535) {
+            T1CONbits.TCKPS = 0b10; //10 = 1:64 prescaler value
+            if (FCY / freq / 64 > 65535) {
+                T1CONbits.TCKPS = 0b11; //11 = 1:256 prescaler value
+                PR1 = (int) (FCY / freq / 256);
+            } else
+                PR1 = (int) (FCY / freq / 64);
+        } else
+            PR1 = (int) (FCY / freq / 8);
+    } else
+        PR1 = (int) (FCY / freq);
+}
 
 void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void) {
     IFS0bits.T3IF = 0;
