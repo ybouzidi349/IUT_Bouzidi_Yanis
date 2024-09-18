@@ -11,10 +11,10 @@ struct {
         float vitesseDroiteConsigne;
         float vitesseDroiteCommandeCourante;
         
-        //float distanceTelemetreExtDroite;
+        float distanceTelemetreExtDroit;
         float distanceTelemetreDroit;
         
-        //float distanceTelemetreExtGauche;
+        float distanceTelemetreExtGauche;
         float distanceTelemetreGauche;
         
         float distanceTelemetreCentre;

@@ -1,7 +1,3 @@
-/*
- * File:   IO.c
- */
-
 #include <xc.h>
 #include "IO.h"
 
@@ -61,4 +57,3 @@ void UnlockIO() {
                 "mov.b w3,[w1] \n"
                 "bclr OSCCON, #6":: : "w1", "w2", "w3");
 }
-
