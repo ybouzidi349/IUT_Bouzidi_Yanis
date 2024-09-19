@@ -1,6 +1,6 @@
 #include <xc.h>
 #include "IO.h"
-
+////
 void InitIO()
 {
     //****************************************************************************************************/
@@ -26,17 +26,17 @@ void InitIO()
     
     //****** Moteurs ************************
 
-    // Configuration des entrées
+    // Configuration des entrï¿½es
     
 
     /****************************************************************************************************/
     // Gestion des pin remappables
     /****************************************************************************************************/
-    UnlockIO(); // On unlock les registres d'entrées/sorties, ainsi que les registres des PPS
+    UnlockIO(); // On unlock les registres d'entrï¿½es/sorties, ainsi que les registres des PPS
     
     //Assignation des remappable pins
         
-    LockIO(); // On lock les registres d'entrées/sorties, ainsi que les registres des PPS
+    LockIO(); // On lock les registres d'entrï¿½es/sorties, ainsi que les registres des PPS
 }
 
 
