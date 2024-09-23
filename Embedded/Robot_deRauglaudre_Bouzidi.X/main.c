@@ -25,8 +25,6 @@ int main(void) {
     }
 }
 
-unsigned char stateRobot;
-
 int BinaryCapteur(float capteur) {
     if (capteur < DISTANCE_LIM)
         return (1); // 1 : Presence d'obstacle
@@ -43,43 +41,7 @@ void StateBinary(void) {
     n += BinaryCapteur(robotState.distanceTelemetreExtDroit);
     return (n);
 }
-unsigned char nextStateRobot = 0;
 
-void SetNextRobotStateInAutomaticMode() {
-
-    unsigned char positionObstacle = PAS_D_OBSTACLE;
-
-    //ÈDtermination de la position des obstacles en fonction des ÈÈËtlmtres
-
-    if (robotState.distanceTelemetreDroit < 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) //Obstacle ‡droite
-        positionObstacle = OBSTACLE_A_DROITE;
-    else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche < 30) //Obstacle ‡gauche
-        positionObstacle = OBSTACLE_A_GAUCHE;
-    else if (robotState.distanceTelemetreCentre < 20) //Obstacle en face
-        positionObstacle = OBSTACLE_EN_FACE;
-    else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) //pas d?obstacle
-        positionObstacle = PAS_D_OBSTACLE;
-
-
-
-    if (positionObstacle == PAS_D_OBSTACLE)
-        nextStateRobot = STATE_AVANCE;
-    else if (positionObstacle == OBSTACLE_A_DROITE)
-        nextStateRobot = STATE_TOURNE_GAUCHE;
-    else if (positionObstacle == OBSTACLE_A_GAUCHE)
-        nextStateRobot = STATE_TOURNE_DROITE;
-    else if (positionObstacle == OBSTACLE_EN_FACE)
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
-
-    if (nextStateRobot != stateRobot - 1)
-        stateRobot = nextStateRobot;
-}
 
 void Infrarouge_Conversion() {
 
@@ -162,22 +124,6 @@ unsigned char nextStateRobot = 0;
 
 void SetNextRobotStateInAutomaticMode() {
     unsigned char positionObstacle = PAS_D_OBSTACLE;
-    //ÈDtermination de la position des obstacles en fonction des ÈÈËtlmtres
-    if (robotState.distanceTelemetreDroit < 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) //Obstacle ‡droite
-        positionObstacle = OBSTACLE_A_DROITE;
-    else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche < 30) //Obstacle ‡gauche
-        positionObstacle = OBSTACLE_A_GAUCHE;
-    else if (robotState.distanceTelemetreCentre < 20) //Obstacle en face
-        positionObstacle = OBSTACLE_EN_FACE;
-    else if (robotState.distanceTelemetreDroit > 30 &&
-            robotState.distanceTelemetreCentre > 20 &&
-            robotState.distanceTelemetreGauche > 30) //pas d?obstacle
-        positionObstacle = PAS_D_OBSTACLE;
-    //ÈDtermination de lÈ?tat ‡venir du robot
     if (positionObstacle == PAS_D_OBSTACLE)
         nextStateRobot = STATE_AVANCE;
     else if (positionObstacle == OBSTACLE_A_DROITE)
@@ -197,24 +143,34 @@ void SetNextRobotStateInAutomaticMode() {
 void OperatingSystemLoop(void) {
     switch (stateRobot) {
         case 00000:
+            stateRobot = STATE_AVANCE;
             break;
         case 00001:
+            stateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00010:
+            stateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00011:
+            stateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00100:
+            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00101:
+            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00110:
+            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00111:
+            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 01000:
+            stateRobot = STATE_TOURNE_DROITE;
             break;
         case 01001:
+            stateRobot = STATE_AVANCE;
             break;
         case 01010:
             break;
