@@ -21,80 +21,102 @@ int main(void) {
 
     InitADC1();
 
-    LED_BLANCHE_1 = 1;
-    LED_ORANGE_1 = 1;
-    LED_BLEUE_1 = 1;
-    LED_ROUGE_1 = 1;
-    LED_VERTE_1 = 1;
-    LED_BLANCHE_2 = 1;
-    LED_BLEUE_2 = 1;
-    LED_ORANGE_2 = 1;
-    LED_ROUGE_2 = 1;
-    LED_VERTE_2 = 1;
-
-    //PWMSetSpeedConsigne(20, MOTEUR_GAUCHE);
-    //PWMSetSpeedConsigne(20, MOTEUR_DROIT);
-
     while (1) {
     }
 }
 
 unsigned char stateRobot;
 
+int BinaryCapteur(float capteur) {
+    if (capteur < DISTANCE_LIM)
+        return (1); // 1 : Presence d'obstacle
+    else
+        return (0);
+}
+
+void StateBinary(void) {
+    int n;
+    n = BinaryCapteur(robotState.distanceTelemetreExtGauche) * 10000;
+    n += BinaryCapteur(robotState.distanceTelemetreGauche) * 1000;
+    n += BinaryCapteur(robotState.distanceTelemetreCentre) * 100;
+    n += BinaryCapteur(robotState.distanceTelemetreDroit) * 10;
+    n += BinaryCapteur(robotState.distanceTelemetreExtDroit);
+    return (n);
+}
+
 void OperatingSystemLoop(void) {
     switch (stateRobot) {
-        case STATE_ATTENTE:
-            timestamp = 0;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            stateRobot = STATE_ATTENTE_EN_COURS;
-        case STATE_ATTENTE_EN_COURS:
-            if (timestamp > 1000)
-                stateRobot = STATE_AVANCE;
+        case 00000:
             break;
-        case STATE_AVANCE:
-            PWMSetSpeedConsigne(VITESSE_ROBOT, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_ROBOT, MOTEUR_GAUCHE);
-            stateRobot = STATE_AVANCE_EN_COURS;
+        case 00001:
             break;
-        case STATE_AVANCE_EN_COURS:
-            SetNextRobotStateInAutomaticMode();
+        case 00010:
             break;
-        case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsigne(VITESSE_ROBOT, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            stateRobot = STATE_TOURNE_GAUCHE_EN_COURS;
+        case 00011:
             break;
-        case STATE_TOURNE_GAUCHE_EN_COURS:
-            SetNextRobotStateInAutomaticMode();
+        case 00100:
             break;
-        case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_ROBOT, MOTEUR_GAUCHE);
-            stateRobot = STATE_TOURNE_DROITE_EN_COURS;
+        case 00101:
             break;
-        case STATE_TOURNE_DROITE_EN_COURS:
-            SetNextRobotStateInAutomaticMode();
+        case 00110:
             break;
-        case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(-VITESSE_VIRAGE, MOTEUR_GAUCHE);
-            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS;
+        case 00111:
             break;
-        case STATE_TOURNE_SUR_PLACE_GAUCHE_EN_COURS:
-            SetNextRobotStateInAutomaticMode();
+            
+        case 01000:
             break;
-        case STATE_TOURNE_SUR_PLACE_DROITE:
-            PWMSetSpeedConsigne(-VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
-            stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
+        case 01001:
             break;
-        case STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS:
-            SetNextRobotStateInAutomaticMode();
+        case 01010:
             break;
-        default:
-            stateRobot = STATE_ATTENTE;
+        case 01011:
             break;
+        case 01100:
+            break;
+        case 01101:
+            break;
+        case 01111:
+            break;
+        case 10000:
+            break;
+        case 10001:
+            break;
+        case 10010:
+            break;
+        case 10011:
+            break;
+        case 10100:
+            break;
+        case 10101:
+            break;
+        case 10111:
+            break;
+        case 11000:
+            break;
+        case 11001:
+            break;
+        case 11010:
+            break;
+        case 11011:
+            break;
+        case 11100:
+            break;
+        case 11101:
+            break;
+        case 11110:
+            break;
+        case 11111:
+            break;
+        case 00000:
+            break;
+        case 00000:
+            break;
+        case 00000:
+            break;
+        case 00000:
+            break;
+
+
     }
 }
 unsigned char nextStateRobot = 0;

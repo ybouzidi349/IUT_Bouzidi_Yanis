@@ -12,8 +12,8 @@ void Infrarouge_Conversion(void);
 #define VITESSE_ROBOT 20
 #define VITESSE_VIRAGE 15
 
-#define DISTANCE_DG 40
-#define DISTANCE_C 30
+#define DISTANCE_LIM 40
+
 
 
 #define STATE_ATTENTE 0
