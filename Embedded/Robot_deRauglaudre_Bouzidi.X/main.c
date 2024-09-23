@@ -126,8 +126,7 @@ void OperatingSystemLoop(void) {
 
 
 void SetNextRobotStateInAutomaticMode() {
-    unsigned char positionObstacle = PAS_D_OBSTACLE;
-    
+ 
     Operating(StateBinary());
 
     if (nextStateRobot != stateRobot - 1)
@@ -137,51 +136,65 @@ void SetNextRobotStateInAutomaticMode() {
 
 void Operating(int test) {
    switch (test) {
-    case 0b00000: // Cas binaire 00000
+    case 00000: // Cas binaire 00000
         nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00001: // Cas binaire 00001
-        nextStateRobot = STATE_TOURNE_GAUCHE;
+    case 00001: // Cas binaire 00001
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00010: // Cas binaire 00010
-        nextStateRobot = STATE_TOURNE_GAUCHE;
+    case 00010: // Cas binaire 00010
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00011: // Cas binaire 00011
-        nextStateRobot = STATE_TOURNE_GAUCHE;
+    case 00011: // Cas binaire 00011
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00100: // Cas binaire 00100
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+    case 00100: // Cas binaire 00100
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00101: // Cas binaire 00101
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+    case 00101: // Cas binaire 00101
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00110: // Cas binaire 00110
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+    case 00110: // Cas binaire 00110
+       nextStateRobot = STATE_AVANCE;
         break;
-    case 0b00111: // Cas binaire 00111
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+    case 00111: // Cas binaire 00111
+      nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01000: // Cas binaire 01000
-        nextStateRobot = STATE_TOURNE_DROITE;
+    case 01000: // Cas binaire 01000
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01001: // Cas binaire 01001
-        nextStateRobot = STATE_TOURNE_DROITE;
+    case 01001: // Cas binaire 01001
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01010: // Cas binaire 01010
-        nextStateRobot = STATE_TOURNE_DROITE;
+    case 01010: // Cas binaire 01010
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01011: // Cas binaire 01011
-        nextStateRobot = STATE_TOURNE_DROITE;
+    case 01011: // Cas binaire 01011
+       nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01100: // Cas binaire 01100
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+    case 01100: // Cas binaire 01100
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01101: // Cas binaire 01101
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+    case 01101: // Cas binaire 01101
+        nextStateRobot = STATE_AVANCE;
         break;
-    case 0b01111: // Cas binaire 01111
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_DROITE;
+    case 01111: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
         break;
-
+    case 10000: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
+        break;
+    case 10001: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
+        break;
+    case 10011: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
+        break;
+    case 1000: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
+        break;
+    case 11111: // Cas binaire 01111
+       nextStateRobot = STATE_AVANCE;
+        break;
     }
 }
