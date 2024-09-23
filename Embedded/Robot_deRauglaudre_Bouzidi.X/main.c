@@ -10,6 +10,13 @@
 #include "main.h"
 #include "robot.h"
 
+void Operating(int test);
+int BinaryCapteur(float capteur);
+int StateBinary(void);
+
+unsigned char stateRobot;
+unsigned char nextStateRobot = 0;
+
 int main(void) {
 
     InitOscillator();
@@ -32,7 +39,7 @@ int BinaryCapteur(float capteur) {
         return (0);
 }
 
-void StateBinary(void) {
+int StateBinary(void) {
     int n;
     n = BinaryCapteur(robotState.distanceTelemetreExtGauche) * 10000;
     n += BinaryCapteur(robotState.distanceTelemetreGauche) * 1000;
@@ -41,7 +48,6 @@ void StateBinary(void) {
     n += BinaryCapteur(robotState.distanceTelemetreExtDroit);
     return (n);
 }
-
 
 void Infrarouge_Conversion() {
 
@@ -60,9 +66,6 @@ void Infrarouge_Conversion() {
         robotState.distanceTelemetreExtDroit = 34 / volts - 5;
     }
 }
-
-
-unsigned char stateRobot;
 
 void OperatingSystemLoop(void) {
     switch (stateRobot) {
@@ -120,57 +123,48 @@ void OperatingSystemLoop(void) {
             break;
     }
 }
-unsigned char nextStateRobot = 0;
+
 
 void SetNextRobotStateInAutomaticMode() {
     unsigned char positionObstacle = PAS_D_OBSTACLE;
-    if (positionObstacle == PAS_D_OBSTACLE)
-        nextStateRobot = STATE_AVANCE;
-    else if (positionObstacle == OBSTACLE_A_DROITE)
-        nextStateRobot = STATE_TOURNE_GAUCHE;
-    else if (positionObstacle == OBSTACLE_A_GAUCHE)
-        nextStateRobot = STATE_TOURNE_DROITE;
-    else if (positionObstacle == OBSTACLE_EN_FACE)
-        nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
-    //Si l?on n?est pas dans la transition de lé?tape en cours
+    
+    Operating(StateBinary());
+
     if (nextStateRobot != stateRobot - 1)
         stateRobot = nextStateRobot;
 
 }
 
-
-
-void OperatingSystemLoop(void) {
-    switch (stateRobot) {
+void Operating(int test) {
+    switch (test) {
         case 00000:
-            stateRobot = STATE_AVANCE;
+            nextStateRobot = STATE_AVANCE;
             break;
         case 00001:
-            stateRobot = STATE_TOURNE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00010:
-            stateRobot = STATE_TOURNE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00011:
-            stateRobot = STATE_TOURNE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_GAUCHE;
             break;
         case 00100:
-            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00101:
-            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00110:
-            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 00111:
-            stateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
+            nextStateRobot = STATE_TOURNE_SUR_PLACE_GAUCHE;
             break;
         case 01000:
-            stateRobot = STATE_TOURNE_DROITE;
+            nextStateRobot = STATE_TOURNE_DROITE;
             break;
         case 01001:
-            stateRobot = STATE_AVANCE;
             break;
         case 01010:
             break;
