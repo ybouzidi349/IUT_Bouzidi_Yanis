@@ -5,6 +5,9 @@
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode(void);
 void Infrarouge_Conversion(void);
+void Operating(int bynary);
+int BinaryCapteur(float capteur);
+int StateBinary(void);
 
 #define FCY 60000000
 #define FREQUENCE_TIMER_1 50 //la frequence timer 1 en Hz
