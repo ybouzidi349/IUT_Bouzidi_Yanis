@@ -85,7 +85,7 @@ void OperatingSystemLoop(void) {
     switch (stateRobot) {
         case STATE_ATTENTE:
             timestamp = 0;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(0, MOTEUR_DROIT );
             PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
             stateRobot = STATE_ATTENTE_EN_COURS;
         case STATE_ATTENTE_EN_COURS:
