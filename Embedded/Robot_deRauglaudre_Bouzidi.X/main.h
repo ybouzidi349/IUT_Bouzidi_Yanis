@@ -11,17 +11,20 @@ int StateBinary(void);
 
 #define FCY 60000000
 
-#define FREQUENCE_TIMER_1 50 //la frequence timer 1 en Hz
-#define FREQUENCE_TIMER_4 1000 // la frequence timer 4
+ /////////////////////MODIF/////////////////////
+ 
+#define FREQUENCE_TIMER_1 50
+#define FREQUENCE_TIMER_4 1000
 
 #define VITESSE_ROBOT 25
 #define VITESSE_T 13
 #define VITESSE_VIRAGE 13
 
-#define DISTANCE_LIM 37
-#define DISTANCE_LIM_CENTRE 42
-#define DISTANCE_LIM_SPECIAL 25
+#define DISTANCE_LIM_CAPTEUR_MILIEU 37
+#define DISTANCE_LIM_CAPTEUR_CENTRALE 42
+#define DISTANCE_LIM_CAPTEUR EXTERIEUR 25
 
+ //////////////////////////////////////////
 
 #define STATE_ATTENTE 0
 #define STATE_ATTENTE_EN_COURS 1

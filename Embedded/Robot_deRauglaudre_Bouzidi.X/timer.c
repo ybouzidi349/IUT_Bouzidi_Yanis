@@ -49,7 +49,6 @@ void InitTimer1(void) {
 
 void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void) {
     PWMUpdateSpeed();
-    ADC1StartConversionSequence();
     IFS0bits.T1IF = 0;
 }
 
@@ -84,6 +83,7 @@ void InitTimer4(void) {
 //Interruption du timer 4
 void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     timestamp ++;
+    ADC1StartConversionSequence();
     Infrarouge_Conversion();
     OperatingSystemLoop();
     IFS1bits.T4IF = 0;

@@ -7,18 +7,17 @@
 #define PWMPER 24.0
 
 void InitPWM(void) {
-    PTCON2bits.PCLKDIV = 0b000; //Divide by 1
-    PTPER = 100 * PWMPER; //éPriode en pourcentage
-    //éRglage PWM moteur 1 sur hacheur 1
-    IOCON1bits.PMOD = 0b11; //PWM I/O pin pair is in the True Independent Output mode
+    PTCON2bits.PCLKDIV = 0b000;
+    PTPER = 100 * PWMPER;
+
+    IOCON1bits.PMOD = 0b11;
     IOCON1bits.PENL = 1;
     IOCON1bits.PENH = 1;
-    FCLCON1 = 0x0003; //éDsactive la gestion des faults
-    IOCON2bits.PMOD = 0b11; //PWM I/O pin pair is in the True Independent Output mode
+    FCLCON1 = 0x0003;
+    IOCON2bits.PMOD = 0b11;
     IOCON2bits.PENL = 1;
     IOCON2bits.PENH = 1;
-    FCLCON2 = 0x0003; //éDsactive la gestion des faults
-    /* Enable PWM Module */
+    FCLCON2 = 0x0003;
     PTCONbits.PTEN = 1;
 }
 
@@ -31,11 +30,21 @@ void PWMSetSpeedConsigne(float vitesseEnPourcents, int moteur)
     }
 }
 
+void PWMSlowDown(float deceleration) {
+
+    if (robotState.vitesseDroiteCommandeCourante > 0) {
+        robotState.vitesseDroiteConsigne = Max(robotState.vitesseDroiteCommandeCourante - deceleration, 0);
+    }
+
+    if (robotState.vitesseGaucheCommandeCourante > 0) {
+        robotState.vitesseGaucheConsigne = Max(robotState.vitesseGaucheCommandeCourante - deceleration, 0);
+    }
+}
+
 float acceleration = 5;
 double talon = 20;
 
 void PWMUpdateSpeed() {
-    // Cette fonction est appelee sur timer et permet de suivre des rampes d acceleration
     if (robotState.vitesseDroiteCommandeCourante < robotState.vitesseDroiteConsigne)
         robotState.vitesseDroiteCommandeCourante = Min(
             robotState.vitesseDroiteCommandeCourante + acceleration,
