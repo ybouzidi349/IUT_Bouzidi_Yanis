@@ -5,17 +5,17 @@
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode(void);
 void Infrarouge_Conversion(void);
-void Operating(int bynary);
+void Operating(int binary);
 int BinaryCapteur(float capteur);
 int StateBinary(void);
 
 #define FCY 60000000
 #define FREQUENCE_TIMER_1 50 //la frequence timer 1 en Hz
 #define FREQUENCE_TIMER_4 1000 // la frequence timer 4
-#define VITESSE_ROBOT 20
-#define VITESSE_VIRAGE 15
+#define VITESSE_ROBOT 25
+#define VITESSE_T 15
 
-#define DISTANCE_LIM 25
+#define DISTANCE_LIM 30
 
 
 
