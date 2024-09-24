@@ -4,6 +4,7 @@
 #include "PWM.h"
 #include "ADC.h"
 #include "main.h"
+#include "robot.h"
 
 unsigned char toggle = 0;
 unsigned long timestamp = 0;
@@ -31,7 +32,6 @@ void InitTimer23(void) {
 
 void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void) {
     IFS0bits.T3IF = 0;
-    //PWMUpdateSpeed();
 }
 
 ////////////////////Initialisation du timer 1 (16 bits)////////////////////
