@@ -15,7 +15,7 @@ int StateBinary(void);
 #define VITESSE_ROBOT 20
 #define VITESSE_VIRAGE 15
 
-#define DISTANCE_LIM 40
+#define DISTANCE_LIM 25
 
 
 
