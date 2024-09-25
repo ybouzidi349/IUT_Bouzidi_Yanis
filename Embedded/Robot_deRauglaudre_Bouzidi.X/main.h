@@ -5,9 +5,9 @@
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode(void);
 void Infrarouge_Conversion(void);
-void Operating(int binary);
-int BinaryCapteur(float capteur, int capteur_special);
-int StateBinary(void);
+char Operating(unsigned char binary)
+unsigned char BinaryCapteur(float capteur, int val)
+unsigned char StateBinary(void)
 
 #define FCY 60000000
 
