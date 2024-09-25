@@ -16,13 +16,13 @@ int StateBinary(void);
 #define FREQUENCE_TIMER_1 50
 #define FREQUENCE_TIMER_4 1000
 
-#define VITESSE_ROBOT 25
+#define VITESSE_ROBOT 28
 #define VITESSE_T 13
 #define VITESSE_VIRAGE 13
 
-#define DISTANCE_LIM_CAPTEUR_MILIEU 37
-#define DISTANCE_LIM_CAPTEUR_CENTRALE 42
-#define DISTANCE_LIM_CAPTEUR EXTERIEUR 25
+#define DISTANCE_LIM 33
+#define DISTANCE_LIM_CENTRE 38
+#define DISTANCE_LIM_EXT 14
 
  //////////////////////////////////////////
 
@@ -42,6 +42,7 @@ int StateBinary(void);
 #define STATE_ARRET_EN_COURS 13
 #define STATE_RECULE 14
 #define STATE_RECULE_EN_COURS 15
+#define STATE_NULL 16
 
 #endif
 

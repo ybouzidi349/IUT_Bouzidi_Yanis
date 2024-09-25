@@ -21,9 +21,7 @@ void InitIO()
     _TRISJ4 = 0; _TRISA9 = 0;// LED Bleue
     _TRISJ11 = 0; _TRISA10 = 0;// LED Rouge
     _TRISH10 = 0; _TRISH3 = 0;// LED Verte 
-    
 
-    
     //****** Moteurs ************************
 
     // Configuration des entr�es
