@@ -27,8 +27,12 @@ int main(void) {
 
     while (1) {
 
-        if (robotState.distanceTelemetreCentre < 50 || robotState.distanceTelemetreGauche < 50 || robotState.distanceTelemetreDroit < 50)
-            vitesse = 15;
+        if ((robotState.distanceTelemetreCentre < 60 
+                || robotState.distanceTelemetreGauche < 60
+                || robotState.distanceTelemetreDroit < 60
+                || robotState.distanceTelemetreExtDroit < 50 
+                || robotState.distanceTelemetreExtGauche < 50))
+                    vitesse = 18;
         else
             vitesse = VITESSE_ROBOT;
 
@@ -80,11 +84,11 @@ void OperatingSystemLoop() {
             break;
         case STATE_TOURNE_GAUCHE:
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            //SetNextRobotStateInAutomaticMode();
+            PWMSetSpeedConsigne(VITESSE_VIRAGE/2, MOTEUR_GAUCHE);
+            SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(VITESSE_VIRAGE/2, MOTEUR_DROIT);
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
             SetNextRobotStateInAutomaticMode();
             break;
@@ -115,8 +119,6 @@ void SetNextRobotStateInAutomaticMode() {
         lastStateRobot = nextStateRobot;
     }
 
-        
-
 
 }
 
@@ -126,8 +128,7 @@ char Operating(unsigned char binary) {
         case 0b00000:
             return (STATE_AVANCE);
             break;
-        case 0b10001:
-        //case 0b00001:
+        case 0b00001:
         case 0b00010:
         case 0b00011:
             return (STATE_TOURNE_GAUCHE);
@@ -154,6 +155,7 @@ char Operating(unsigned char binary) {
         case 0b10111:
             return (STATE_TOURNE_SUR_PLACE_DROITE);
             break;
+        case 0b10001:
         case 0b01100:
         case 0b01101:
         case 0b01110:
@@ -164,7 +166,7 @@ char Operating(unsigned char binary) {
         case 0b11100:
         case 0b11101:
         case 0b11110:
-        //case 0b11111:
+        case 0b11111:
             return (STATE_TOURNE_SUR_PLACE_DROITE);
             break;
         default:
@@ -197,6 +199,6 @@ void Infrarouge_Conversion() {
         robotState.distanceTelemetreGauche = 34 / (((float) result[1]) * 3.3 / 4096) - 5;
         robotState.distanceTelemetreCentre = 34 / (((float) result[2]) * 3.3 / 4096) - 5;
         robotState.distanceTelemetreDroit = 34 / (((float) result[3]) * 3.3 / 4096) - 5;
-        //robotState.distanceTelemetreExtDroit = 34 / (((float) result[4]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreExtDroit = 34 / (((float) result[4]) * 3.3 / 4096) - 5;
     }
 }

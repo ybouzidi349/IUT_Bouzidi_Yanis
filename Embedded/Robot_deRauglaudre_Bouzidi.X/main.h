@@ -17,12 +17,12 @@ unsigned char StateBinary(void);
 #define FREQUENCE_TIMER_4 1000
 
 #define VITESSE_ROBOT 30
-#define VITESSE_T 18
+#define VITESSE_T 19
 #define VITESSE_VIRAGE 18
 
 #define DISTANCE_LIM 38
-#define DISTANCE_LIM_CENTRE 33
-#define DISTANCE_LIM_EXT 20
+#define DISTANCE_LIM_CENTRE 37
+#define DISTANCE_LIM_EXT 25
 
  //////////////////////////////////////////
 
