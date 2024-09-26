@@ -42,7 +42,7 @@ void PWMSlowDown(float deceleration) {
 }
 
 float acceleration = 5;
-double talon = 20;
+double talon = 50;
 
 void PWMUpdateSpeed() {
     if (robotState.vitesseDroiteCommandeCourante < robotState.vitesseDroiteConsigne)

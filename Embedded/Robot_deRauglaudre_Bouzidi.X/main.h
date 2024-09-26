@@ -5,9 +5,9 @@
 void OperatingSystemLoop(void);
 void SetNextRobotStateInAutomaticMode(void);
 void Infrarouge_Conversion(void);
-char Operating(unsigned char binary)
-unsigned char BinaryCapteur(float capteur, int val)
-unsigned char StateBinary(void)
+char Operating(unsigned char binary);
+unsigned char BinaryCapteur(float capteur, int val);
+unsigned char StateBinary(void);
 
 #define FCY 60000000
 
@@ -16,13 +16,13 @@ unsigned char StateBinary(void)
 #define FREQUENCE_TIMER_1 50
 #define FREQUENCE_TIMER_4 1000
 
-#define VITESSE_ROBOT 28
-#define VITESSE_T 13
-#define VITESSE_VIRAGE 13
+#define VITESSE_ROBOT 30
+#define VITESSE_T 18
+#define VITESSE_VIRAGE 18
 
-#define DISTANCE_LIM 33
-#define DISTANCE_LIM_CENTRE 38
-#define DISTANCE_LIM_EXT 14
+#define DISTANCE_LIM 38
+#define DISTANCE_LIM_CENTRE 33
+#define DISTANCE_LIM_EXT 20
 
  //////////////////////////////////////////
 

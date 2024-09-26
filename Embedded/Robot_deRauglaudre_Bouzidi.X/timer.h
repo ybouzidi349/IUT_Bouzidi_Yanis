@@ -8,5 +8,6 @@
     void SetFreqTimer4(float freq);
     
     extern unsigned long timestamp;
+    extern unsigned long tempAction;
     
 #endif /* TIMER_H */
