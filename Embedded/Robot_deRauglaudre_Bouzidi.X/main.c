@@ -32,13 +32,13 @@ int main(void) {
                 || robotState.distanceTelemetreDroit < 60
                 || robotState.distanceTelemetreExtDroit < 50 
                 || robotState.distanceTelemetreExtGauche < 50))
-                    vitesse = 18;
+                    vitesse = 17;
         else
             vitesse = VITESSE_ROBOT;
 
 
         if (BP1 != 0) {
-            tempAction = 0;
+                                                              
             stateRobot = STATE_ATTENTE;
         }
 
@@ -84,11 +84,11 @@ void OperatingSystemLoop() {
             break;
         case STATE_TOURNE_GAUCHE:
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_VIRAGE/2, MOTEUR_GAUCHE);
+            PWMSetSpeedConsigne(VITESSE_VIRAGE/2.5, MOTEUR_GAUCHE);
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(VITESSE_VIRAGE/2, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(VITESSE_VIRAGE/2.5, MOTEUR_DROIT);
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
             SetNextRobotStateInAutomaticMode();
             break;

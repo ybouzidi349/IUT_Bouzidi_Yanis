@@ -18,11 +18,12 @@ unsigned char StateBinary(void);
 
 #define VITESSE_ROBOT 30
 #define VITESSE_T 19
-#define VITESSE_VIRAGE 18
+#define VITESSE_VIRAGE 21
 
 #define DISTANCE_LIM 38
-#define DISTANCE_LIM_CENTRE 37
-#define DISTANCE_LIM_EXT 25
+#define DISTANCE_LIM_CENTRE 31
+#define DISTANCE_LIM_EXT 24
+
 
  //////////////////////////////////////////
 
