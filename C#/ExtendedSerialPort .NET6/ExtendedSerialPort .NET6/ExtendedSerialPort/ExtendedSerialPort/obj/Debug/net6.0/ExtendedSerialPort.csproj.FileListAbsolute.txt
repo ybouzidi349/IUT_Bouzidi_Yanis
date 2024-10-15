@@ -1,0 +1,24 @@
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.deps.json
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.dll
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.pdb
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.AssemblyReference.cache
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfoInputs.cache
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfo.cs
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.CoreCompileInputs.cache
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\refint\ExtendedSerialPort.dll
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.pdb
+C:\Github\Enseignement\Projet électronique\Code Source\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ref\ExtendedSerialPort.dll
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.deps.json
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.dll
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.pdb
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.AssemblyReference.cache
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfoInputs.cache
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfo.cs
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.CoreCompileInputs.cache
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\refint\ExtendedSerialPort.dll
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.pdb
+C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ref\ExtendedSerialPort.dll
