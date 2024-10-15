@@ -1,0 +1,64 @@
+public partial class MainWindow : Window
+{
+    ExtendedSerialPort serialPort1;
+    string receivedText;
+    DispatcherTimer timerAffichage;
+
+    public MainWindow()
+    {
+        InitializeComponent();
+        serialPort1 = new ExtendedSerialPort("COM13", 115200, Parity.None, 8, StopBits.One);
+        serialPort1.DataReceived += SerialPort1_DataReceived;
+        serialPort1.Open();
+
+        timerAffichage = new DispatcherTimer();
+        timerAffichage.Interval = new TimeSpan(0, 0, 0, 0, 100);
+        timerAffichage.Tick += TimerAffichage_Tick;
+        timerAffichage.Start();
+    }
+
+    private void TimerAffichage_Tick(object? sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(receivedText))
+        {
+            textBoxReception.Dispatcher.Invoke(() =>
+            {
+                textBoxReception.Text += receivedText;
+                receivedText = string.Empty; // Reset after updating the UI
+            });
+        }
+    }
+
+    private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
+    {
+        string data = await Task.Run(() => serialPort1.ReadLine());
+        receivedText += data; 
+    }
+
+    private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
+    {
+        SendMessage();
+    }
+
+    private void textBoxEmission_KeyUp(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+            SendMessage();
+    }
+
+    private void SendMessage()
+    {
+        string value = textBoxEmission.Text;
+        textBoxEmission.Text = "";
+        if (value.Length > 0)
+        {
+            Task.Run(() => serialPort1.WriteLine(value)); // Send message asynchronously
+        }
+    }
+
+    private void buttonClear_Click(object sender, RoutedEventArgs e)
+    {
+        textBoxReception.Text = "";
+    }
+}
+
