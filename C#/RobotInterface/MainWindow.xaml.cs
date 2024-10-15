@@ -32,25 +32,26 @@ namespace RobotInterface
         {
             InitializeComponent();
             serialPort1 = new ExtendedSerialPort("COM13", 115200, Parity.None, 8, StopBits.One);
-            serialPort1.DataReceived += SerialPort1_DataReceived; 
+            serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
+
             timerAffichage = new DispatcherTimer();
             timerAffichage.Interval = new TimeSpan(0, 0, 0, 0, 100);
-            timerAffichage.Tick += TimerAffichage_Tick; ;
+            timerAffichage.Tick += TimerAffichage_Tick;
             timerAffichage.Start();
-
         }
-
         private void TimerAffichage_Tick(object? sender, EventArgs e)
         {
-            if (receivedText.Length > 0)
-                textBoxReception.Text += receivedText;
+            if (!string.IsNullOrEmpty(receivedText))
+            {
+                    textBoxReception.Text += receivedText;
+                    receivedText = ""; // Reset after updating the UI
+            }
         }
 
-        private void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
+        private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
         {
-            receivedText += serialPort1.ReadLine();
-            //receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
+            receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
         }
 
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
@@ -63,14 +64,17 @@ namespace RobotInterface
             if (e.Key == Key.Enter)
                 SendMessage();
         }
+
         private void SendMessage()
         {
             string value = textBoxEmission.Text;
             textBoxEmission.Text = "";
             if (value.Length > 0)
+            {
                 serialPort1.WriteLine(value);
-
+            }
         }
+
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
             textBoxReception.Text = "";
