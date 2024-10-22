@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class Robot
 {
+    public Queue<byte> byteListReceived = new Queue<byte>();
     public string receivedText = "";
     public float distanceTelemetreDroit;
     public float distanceTelemetreCentre;
@@ -14,4 +15,3 @@ public class Robot
     {
     }
 }
-²   

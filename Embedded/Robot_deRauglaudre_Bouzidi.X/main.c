@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <xc.h>
+
 #include "ChipConfig.h"
 #include "IO.h"
 #include "timer.h"
@@ -9,6 +10,7 @@
 #include "PWM.h"
 #include "main.h"
 #include "robot.h"
+#include "uart.h"
 
 unsigned char stateRobot = STATE_NULL;
 unsigned char nextStateRobot = 0;
