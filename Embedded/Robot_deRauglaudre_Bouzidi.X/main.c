@@ -11,6 +11,7 @@
 #include "main.h"
 #include "robot.h"
 #include "uart.h"
+#include "CB_TX1.h"
 
 unsigned char stateRobot = STATE_NULL;
 unsigned char nextStateRobot = 0;
@@ -25,28 +26,30 @@ int main(void) {
     InitTimer23();
     InitPWM();
     InitADC1();
-
+    InitUART();
 
     while (1) {
 
-        if ((robotState.distanceTelemetreCentre < 60 
+        if ((robotState.distanceTelemetreCentre < 60
                 || robotState.distanceTelemetreGauche < 60
                 || robotState.distanceTelemetreDroit < 60
-                || robotState.distanceTelemetreExtDroit < 50 
+                || robotState.distanceTelemetreExtDroit < 50
                 || robotState.distanceTelemetreExtGauche < 50))
-                    vitesse = 17;
+            vitesse = 17;
         else
             vitesse = VITESSE_ROBOT;
 
 
         if (BP1 != 0) {
-                                                              
+
             stateRobot = STATE_ATTENTE;
         }
 
         if (BP2 != 0 || tempAction > 60000)
             stateRobot = STATE_NULL;
 
+        SendMessage((unsigned char*) "Bonjour", 7);
+        
         ft_LED();
     }
 }
@@ -86,11 +89,11 @@ void OperatingSystemLoop() {
             break;
         case STATE_TOURNE_GAUCHE:
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_VIRAGE/2.5, MOTEUR_GAUCHE);
+            PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_GAUCHE);
             SetNextRobotStateInAutomaticMode();
             break;
         case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(VITESSE_VIRAGE/2.5, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_DROIT);
             PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
             SetNextRobotStateInAutomaticMode();
             break;

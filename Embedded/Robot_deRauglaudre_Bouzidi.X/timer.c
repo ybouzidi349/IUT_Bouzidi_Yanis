@@ -3,8 +3,10 @@
 #include "IO.h"
 #include "PWM.h"
 #include "ADC.h"
-#include "main.h"
+#include "ChipConfig.h"
 #include "robot.h"
+#include "main.h"
+
 
 unsigned char toggle = 0;
 unsigned long timestamp = 0;

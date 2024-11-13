@@ -28,7 +28,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM13", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM25", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -41,8 +41,12 @@ namespace RobotInterface
         {
             if (robot.byteListReceived.Count != 0)
             {
-                textBoxReception.Text += robot.byteListReceived.Dequeue().ToString("X2") + " ";
+                if (robot.byteListReceived.Count > 1)
+                    textBoxReception.Text += robot.byteListReceived.Dequeue().ToString("X2") + " ";
+                else
+                    textBoxReception.Text += robot.byteListReceived.Dequeue().ToString("X2") + "\n";
             }
+            
         }
 
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)

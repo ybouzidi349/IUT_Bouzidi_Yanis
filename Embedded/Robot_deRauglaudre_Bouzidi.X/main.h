@@ -8,8 +8,8 @@ void Infrarouge_Conversion(void);
 char Operating(unsigned char binary);
 unsigned char BinaryCapteur(float capteur, int val);
 unsigned char StateBinary(void);
+void ft_LED(void);
 
-#define FCY 60000000
 
  /////////////////////MODIF/////////////////////
  

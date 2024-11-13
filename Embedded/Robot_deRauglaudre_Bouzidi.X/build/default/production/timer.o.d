@@ -1,5 +1,5 @@
-build/default/production/timer.o: timer.c timer.h IO.h PWM.h ADC.h main.h \
- robot.h
+build/default/production/timer.o: timer.c timer.h IO.h PWM.h ADC.h \
+ ChipConfig.h robot.h main.h
 
 timer.h:
 
@@ -9,6 +9,8 @@ PWM.h:
 
 ADC.h:
 
-main.h:
+ChipConfig.h:
 
 robot.h:
+
+main.h:
