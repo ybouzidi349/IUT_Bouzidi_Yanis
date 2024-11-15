@@ -2,7 +2,7 @@
 #include "UART.h"
 #include "ChipConfig.h"
 
-
+/*
 void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
     IFS0bits.U1RXIF = 0;
 
@@ -18,6 +18,7 @@ void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void) {
         U1TXREG = U1RXREG;
     }
 }
+*/
 
 void InitUART(void) {
     U1MODEbits.STSEL = 0; // 1-stop bit
