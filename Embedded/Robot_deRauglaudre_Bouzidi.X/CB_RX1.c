@@ -5,8 +5,8 @@
 
 #define CBRX1_BUFFER_SIZE 128
 
-int cbRx1Head;
-int cbRx1Tail;
+int cbRx1Head = 0;
+int cbRx1Tail = 0;
 unsigned char cbRx1Buffer[CBRX1_BUFFER_SIZE];
 
 void CB_RX1_Add(unsigned char value) {
