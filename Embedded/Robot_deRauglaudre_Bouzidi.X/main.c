@@ -42,7 +42,6 @@ int main(void) {
 
 
         if (BP1 != 0) {
-
             stateRobot = STATE_ATTENTE;
         }
 

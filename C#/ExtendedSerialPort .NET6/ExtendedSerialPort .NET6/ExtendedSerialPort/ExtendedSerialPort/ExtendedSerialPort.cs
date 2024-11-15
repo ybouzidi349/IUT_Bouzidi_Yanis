@@ -1,7 +1,6 @@
 ﻿using System.IO.Ports;
 using System.Management;
 using System.Text.RegularExpressions;
-using ExtendedSerialPort_NS;
 
 namespace ExtendedSerialPort_NS
 {

@@ -93,6 +93,36 @@ namespace RobotInterface
             }  
             serialPort1.Write(byteList, 0, byteList.Length);
         }
+
+        byte CalculateChecksum(int msgFunction,int msgPayloadLength, byte[] msgPayload)
+        {
+            byte checksum;
+
+            checksum ^= 0xFE;
+            checksum ^= 0x00;
+            checksum ^= (byte)msgPayloadLength;
+
+            for (int i = 0; i < msgPayloadLength; i++)
+            {
+                checksum ^= msgPayload[i];
+            }
+            return checksum;
+        }
+
+        void UartEncodeAndSendMessage(int msgFunction,int msgPayloadLength, byte[] msgPayload)
+        {
+            byte[msgPayloadLength + 6] trame;
+
+            msgPayload[0] += 0xFE;
+            msgPayload[1] += 0x00;
+            msgPayload[2] += (byte)msgPayloadLength;
+
+            for (int i = 2; i < msgPayloadLength; i++)
+            {
+                msgPayload[i] ^= msgPayload[i];
+            }
+        }
+
     }
 }
 

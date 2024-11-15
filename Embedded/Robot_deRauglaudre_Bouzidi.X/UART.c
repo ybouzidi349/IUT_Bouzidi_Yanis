@@ -45,4 +45,33 @@ void SendMessageDirect(unsigned char* message, int length) {
     }
 }
 
+byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload) {
+    
+    int checksum = 0;
+    checksum += msgFunction & 0xFF;  
+    checksum += msgPayloadLength & 0xFF;
+    for (int i = 0; i < msgPayloadLength; i++) {
+        checksum += msgPayload[i] & 0xFF;
+    }
+    return (byte)(checksum & 0xFF); 
+}
 
+void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, byte[] msgPayload) {
+    
+    
+    byte checksum = CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
+    byte[] frame = new byte[msgPayloadLength + 3]; 
+    
+    
+    frame[0] = (byte)(msgFunction & 0xFF); 
+    frame[1] = (byte)(msgPayloadLength & 0xFF);
+    for (int i = 0; i < msgPayloadLength; i++) {
+        frame[i + 2] = msgPayload[i];
+    }
+    byte[] finalFrame = new byte[frame.Length + 1];
+    for (int i = 0; i < frame.Length; i++) {
+        finalFrame[i] = frame[i];
+    }
+    finalFrame[frame.Length] = checksum;
+    Serial.write(finalFrame, finalFrame.Length);
+}
