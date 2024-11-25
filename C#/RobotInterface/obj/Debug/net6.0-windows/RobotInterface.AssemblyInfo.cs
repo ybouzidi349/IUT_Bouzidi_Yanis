@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RobotInterface")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0198b5c84d7508fc54bd04c20cb2c501fca796d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("RobotInterface")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RobotInterface")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

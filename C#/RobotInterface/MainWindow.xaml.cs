@@ -102,6 +102,22 @@ namespace RobotInterface
                     byte receivedByte = robot.byteListReceived.Dequeue();
                     //DecodeMessage(receivedByte);
 
+                    //if(robot.receivedText != "" && robot.receivedText != "\r")
+                    //{
+                    //    textBoxReception.Text += robot.receivedText;
+                    //    robot.receivedText = "";
+                    //}
+                    //while (robot.byteListReceived.Count > 0)
+                    //{
+                    //    //var c = robot.byteListReceived.Dequeue();
+                    //    // ASCII :
+                    //    //    textBoxReception.Text += Convert.ToChar(c);
+
+                    //    // HEXA :
+                    //    //    textBoxReception.Text += "0x" + c.ToString("X2") + " ";
+
+                    //}
+
                     if (robot.byteListReceived.Count >= 1)
                         textBoxReception.Text += receivedByte.ToString("X2") + " ";
                     else
