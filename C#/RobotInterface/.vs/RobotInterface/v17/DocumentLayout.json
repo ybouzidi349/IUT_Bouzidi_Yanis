@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDBD3269-1AA0-40D6-A789-46B417A1691F}|..\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj|C:\\Github\\IUT_Bouzidi_Yanis\\C#\\extendedserialport .net6\\extendedserialport .net6\\extendedserialport\\extendedserialport\\extendedserialport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SerialPort.cs",
+              "DocumentMoniker": "C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
+              "ToolTip": "C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs [Lecture seule]",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs [Lecture seule]",
+              "ViewState": "AQIAADIEAAAAAAAAAAAewEgEAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T13:32:51.803Z",
+              "EditorCaption": " [Lecture seule]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-15T09:44:28.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ExtendedSerialPort.cs",
+              "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.cs",
+              "RelativeDocumentMoniker": "..\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.cs",
+              "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.cs",
+              "RelativeToolTip": "..\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwCoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T09:43:47.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAuwHYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T15:23:46.21Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

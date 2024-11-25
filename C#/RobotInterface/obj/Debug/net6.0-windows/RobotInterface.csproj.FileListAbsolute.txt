@@ -32,4 +32,5 @@ C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.dll
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.pdb
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.AssemblyReference.cache
-C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.CopyComplete
+C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.sourcelink.json
+C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInt.E07FE793.Up2Date
