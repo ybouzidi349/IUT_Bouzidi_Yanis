@@ -23,3 +23,16 @@ C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6
 C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.pdb
 C:\GitHub\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ref\ExtendedSerialPort.dll
 C:\Github\IUT_Bouzidi_Yanis\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.sourcelink.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.deps.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\bin\Debug\net6.0\ExtendedSerialPort.pdb
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.AssemblyReference.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfoInputs.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.AssemblyInfo.cs
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.csproj.CoreCompileInputs.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.sourcelink.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\refint\ExtendedSerialPort.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ExtendedSerialPort.pdb
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\ExtendedSerialPort .NET6\ExtendedSerialPort .NET6\ExtendedSerialPort\ExtendedSerialPort\obj\Debug\net6.0\ref\ExtendedSerialPort.dll

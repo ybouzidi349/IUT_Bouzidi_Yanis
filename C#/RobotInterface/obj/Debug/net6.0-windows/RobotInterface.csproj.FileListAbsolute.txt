@@ -34,3 +34,39 @@ C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedS
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.AssemblyReference.cache
 C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.sourcelink.json
 C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInt.E07FE793.Up2Date
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.exe
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.deps.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.runtimeconfig.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.pdb
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\System.CodeDom.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\System.IO.Ports.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\System.Management.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\System.IO.Ports.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.IO.Ports.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.pdb
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.AssemblyReference.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface_MarkupCompile.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface_MarkupCompile.lref
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.g.resources
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.AssemblyInfoInputs.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.AssemblyInfo.cs
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.CoreCompileInputs.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.sourcelink.json
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInt.E07FE793.Up2Date
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\refint\RobotInterface.dll
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.pdb
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.genruntimeconfig.cache
+C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\ref\RobotInterface.dll

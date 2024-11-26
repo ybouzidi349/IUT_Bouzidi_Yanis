@@ -28,7 +28,7 @@ namespace RobotInterface
         StateReception rcvState = StateReception.Waiting;
         int msgDecodedFunction = 0;
         int msgDecodedPayloadLength = 0;
-        byte[] msgDecodedPayload;
+        byte[] msgDecodedPayload = new byte[0];
         int msgDecodedPayloadIndex = 0;
 
         public enum StateReception
@@ -45,7 +45,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM6", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM8", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -95,36 +95,21 @@ namespace RobotInterface
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
         private void TimerAffichage_Tick(object? sender, EventArgs e)
         {
-            if (robot.byteListReceived.Count != 0)
+
+            if(robot.receivedText != "\n" && robot.receivedText != "\r" && robot.receivedText != " ")
             {
-                if (robot.byteListReceived.Count != 0)
-                {
-                    byte receivedByte = robot.byteListReceived.Dequeue();
-                    //DecodeMessage(receivedByte);
-
-                    //if(robot.receivedText != "" && robot.receivedText != "\r")
-                    //{
-                    //    textBoxReception.Text += robot.receivedText;
-                    //    robot.receivedText = "";
-                    //}
-                    //while (robot.byteListReceived.Count > 0)
-                    //{
-                    //    //var c = robot.byteListReceived.Dequeue();
-                    //    // ASCII :
-                    //    //    textBoxReception.Text += Convert.ToChar(c);
-
-                    //    // HEXA :
-                    //    //    textBoxReception.Text += "0x" + c.ToString("X2") + " ";
-
-                    //}
-
-                    if (robot.byteListReceived.Count >= 1)
-                        textBoxReception.Text += receivedByte.ToString("X2") + " ";
-                    else
-                        textBoxReception.Text += receivedByte.ToString("X2") + "\n";
-                }
+                textBoxReception.Text += robot.receivedText;
+                robot.receivedText = "";
             }
 
+            if (robot.byteListReceived.Count > 0)
+            {
+                var c = robot.byteListReceived.Dequeue();
+                DecodeMessage(c);
+                //textBoxReception.Text += Convert.ToChar(c);
+                textBoxReception.Text += "0x" + c.ToString("X2") + " ";
+
+            }
         }
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
         {
@@ -132,7 +117,6 @@ namespace RobotInterface
             {
                 robot.byteListReceived.Enqueue(e.Data[i]);
             }
-            robot.receivedText += Encoding.UTF8.GetString(e.Data, 0, e.Data.Length);
         }
 
         private void DecodeMessage(byte c)
@@ -140,29 +124,27 @@ namespace RobotInterface
             switch (rcvState)
             {
                 case StateReception.Waiting:
-                    
-                if(c != 0x00 && c != 0xFE)
-                    rcvState = StateReception.FunctionMSB;
-
-                break;
+                    if (c != 0x00 && c != 0xFE)
+                        rcvState = StateReception.FunctionMSB;
+                    break;
 
                 case StateReception.FunctionMSB:
-                    msgDecodedFunction = c;
+                    msgDecodedFunction = c << 8;
                     rcvState = StateReception.FunctionLSB;
-                break;
+                    break;
 
                 case StateReception.FunctionLSB:
-                    msgDecodedFunction = (msgDecodedFunction << 8) | c;
+                    msgDecodedFunction |= c;
                     rcvState = StateReception.PayloadLengthMSB;
                     break;
 
                 case StateReception.PayloadLengthMSB:
-                    msgDecodedPayloadLength = c;
+                    msgDecodedPayloadLength = c << 8;
                     rcvState = StateReception.PayloadLengthLSB;
                     break;
 
                 case StateReception.PayloadLengthLSB:
-                    msgDecodedPayloadLength = (msgDecodedPayloadLength << 8) | c;
+                    msgDecodedPayloadLength |= c;
                     msgDecodedPayload = new byte[msgDecodedPayloadLength];
                     rcvState = StateReception.Payload;
                     break;
@@ -171,6 +153,7 @@ namespace RobotInterface
                     msgDecodedPayload[msgDecodedPayloadIndex++] = c;
                     if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
                     {
+                        
                         rcvState = StateReception.CheckSum;
                     }
                     break;
@@ -181,15 +164,16 @@ namespace RobotInterface
 
                     if (calculatedChecksum == receivedChecksum)
                     {
-                        Console.WriteLine("Message valide");
+                        // Message correct
                         rcvState = StateReception.Waiting;
                     }
                     else
                     {
-                        Console.WriteLine("Message incorrect");
-                        rcvState = StateReception.CheckSum;
+                        // Message incorrect
+                        rcvState = StateReception.Waiting;
                     }
 
+                    msgDecodedPayloadIndex = 0;
                     break;
 
                 default:
@@ -197,7 +181,6 @@ namespace RobotInterface
                     break;
             }
         }
-
 
         //////////////////////////////////////////////// ENVOIE DES MESSAGES ////////////////////////////////////////////////
 
@@ -244,6 +227,11 @@ namespace RobotInterface
 
             trame[msgPayloadLength + 5] += CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
             serialPort1.Write(trame, 0, trame.Length);
+        }
+
+        private void textBoxEmission_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

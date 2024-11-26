@@ -5,30 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobotInterface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800" Background="#FFFAFAFA">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox x:Name="groupBox" Header="Emission" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="0" Grid.Row="0">
-            <TextBox x:Name="textBoxEmission" BorderBrush="{x:Null}" Background="{x:Null}" AcceptsReturn="True" KeyUp="textBoxEmission_KeyUp"/>
+        <GroupBox x:Name="groupBox" Header="Emission" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Padding="10">
+            <TextBox x:Name="textBoxEmission" BorderBrush="{x:Null}" Background="{x:Null}" AcceptsReturn="True" KeyUp="textBoxEmission_KeyUp" Padding="5"/>
         </GroupBox>
-        <GroupBox x:Name="groupBox1" Header="Réception" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="0">
-            <TextBox x:Name="textBoxReception" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+        <GroupBox x:Name="groupBox1" Header="Réception" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="0" Padding="10">
+            <TextBox x:Name="textBoxReception" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" Padding="5"/>
         </GroupBox>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button x:Name="buttonEnvoyer" Grid.Column="1" Content="Send" Width="100" Margin="5" Click="buttonEnvoyer_Click"/>
-            <Button x:Name="buttonClear" Grid.Column="1" Content="Clear" Width="100" Margin="5" Click="buttonClear_Click"/>
-            <Button x:Name="buttonTest" Grid.Column="1" Content="Test" Width="100" Margin="5" Click="buttonTest_Click"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10">
+            <TextBlock Text="Vitesse Moteur Droit:" Margin="5"/>
+            <TextBox x:Name="textBoxVitesseDroit" Margin="5"/>
+            <TextBlock Text="Vitesse Moteur Gauche:" Margin="5"/>
+            <TextBox x:Name="textBoxVitesseGauche" Margin="5"/>
+            <CheckBox x:Name="checkBoxOption1" Content="Option 1" Margin="5"/>
+            <CheckBox x:Name="checkBoxOption2" Content="Option 2" Margin="5"/>
         </StackPanel>
-        
 
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
+            <Button x:Name="buttonEnvoyer" Content="Send" Width="120" Margin="5" Click="buttonEnvoyer_Click" Style="{StaticResource {x:Type Button}}"/>
+            <Button x:Name="buttonClear" Content="Clear" Width="120" Margin="5" Click="buttonClear_Click" Style="{StaticResource {x:Type Button}}"/>
+            <Button x:Name="buttonTest" Content="Test" Width="120" Margin="5" Click="buttonTest_Click" Style="{StaticResource {x:Type Button}}"/>
+        </StackPanel>
     </Grid>
 </Window>
