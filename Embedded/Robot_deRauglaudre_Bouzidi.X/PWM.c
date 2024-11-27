@@ -30,17 +30,6 @@ void PWMSetSpeedConsigne(float vitesseEnPourcents, int moteur)
     }
 }
 
-void PWMSlowDown(float deceleration) {
-
-    if (robotState.vitesseDroiteCommandeCourante > 0) {
-        robotState.vitesseDroiteConsigne = Max(robotState.vitesseDroiteCommandeCourante - deceleration, 0);
-    }
-
-    if (robotState.vitesseGaucheCommandeCourante > 0) {
-        robotState.vitesseGaucheConsigne = Max(robotState.vitesseGaucheCommandeCourante - deceleration, 0);
-    }
-}
-
 float acceleration = 5;
 double talon = 50;
 

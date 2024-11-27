@@ -45,7 +45,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM8", /*115200*/  9600 , Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM25", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -75,16 +75,7 @@ namespace RobotInterface
 
         private void buttonTest_Click(object sender, RoutedEventArgs e)
         {
-            //byte[] byteList = new byte[20];
-
-            string message = "Bonjour";
-
-            byte[] byteList = Encoding.ASCII.GetBytes(message);
-
-            /*for (int i = 0; i < 20; i++)
-            {
-                byteList[i] = (byte)(2 * i);
-            }*/
+            byte[] byteList = Encoding.ASCII.GetBytes("Bonjour");
 
             int msgFunction = 0x0080;
             int msgPayloadLength = byteList.Length;
@@ -96,20 +87,13 @@ namespace RobotInterface
         private void TimerAffichage_Tick(object? sender, EventArgs e)
         {
 
-            if(robot.receivedText != "\n" && robot.receivedText != "\r" && robot.receivedText != " ")
-            {
-                textBoxReception.Text += robot.receivedText;
-                robot.receivedText = "";
-            }
-
-            if (robot.byteListReceived.Count > 0)
+            if (robot.byteListReceived.Count > 0) // While ?
             {
                 var c = robot.byteListReceived.Dequeue();
                 DecodeMessage(c);
 
-                textBoxReception.Text += Convert.ToChar(c);
-                //textBoxReception.Text += "0x" + c.ToString("X2") + " ";
-
+                //textBoxReception.Text += Convert.ToChar(c);
+                textBoxReception.Text += "0x" + c.ToString("X2") + " ";
             }
         }
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
@@ -230,10 +214,6 @@ namespace RobotInterface
             serialPort1.Write(trame, 0, trame.Length);
         }
 
-        private void textBoxEmission_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
 

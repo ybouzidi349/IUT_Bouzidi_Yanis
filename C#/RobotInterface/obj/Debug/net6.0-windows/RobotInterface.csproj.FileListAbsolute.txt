@@ -32,8 +32,6 @@ C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\runtimes\
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.dll
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\bin\Debug\net6.0-windows\ExtendedSerialPort.pdb
 C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.AssemblyReference.cache
-C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.sourcelink.json
-C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInt.E07FE793.Up2Date
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.exe
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.deps.json
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\bin\Debug\net6.0-windows\RobotInterface.runtimeconfig.json
@@ -70,3 +68,4 @@ C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.pdb
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.genruntimeconfig.cache
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\ref\RobotInterface.dll
+C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.CopyComplete

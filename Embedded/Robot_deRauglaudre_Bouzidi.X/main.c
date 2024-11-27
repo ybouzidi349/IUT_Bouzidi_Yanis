@@ -13,6 +13,7 @@
 #include "robot.h"
 #include "uart.h"
 #include "CB_TX1.h"
+#include "CB_RX1.h"
 
 unsigned char stateRobot = STATE_NULL;
 unsigned char nextStateRobot = 0;
