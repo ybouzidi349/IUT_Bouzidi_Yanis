@@ -11,26 +11,64 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <GroupBox x:Name="groupBox" Header="Emission" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Padding="10">
+        <GroupBox x:Name="groupBox" Header="Emission" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="0" Grid.Row="0" Padding="10">
             <TextBox x:Name="textBoxEmission" BorderBrush="{x:Null}" Background="{x:Null}" AcceptsReturn="True" KeyUp="textBoxEmission_KeyUp" Padding="5"/>
         </GroupBox>
+
         <GroupBox x:Name="groupBox1" Header="Réception" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="0" Padding="10">
             <TextBox x:Name="textBoxReception" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" Padding="5"/>
         </GroupBox>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10">
-            <TextBlock Text="Vitesse Moteur Droit:" Margin="5"/>
-            <TextBox x:Name="textBoxVitesseDroit" Margin="5"/>
-            <TextBlock Text="Vitesse Moteur Gauche:" Margin="5"/>
-            <TextBox x:Name="textBoxVitesseGauche" Margin="5"/>
-            <CheckBox x:Name="checkBoxOption1" Content="Option 1" Margin="5"/>
-            <CheckBox x:Name="checkBoxOption2" Content="Option 2" Margin="5"/>
+        <GroupBox x:Name="groupBoxCapteurs" Header="Valeurs des Capteurs" Margin="10,10,10,24" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="1" Padding="10">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Distance télémètre Ext_Droit:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxDistanceTelemetreExtDroit" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Distance télémètre Droit:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxDistanceTelemetreDroit" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Distance télémètre Centre:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxDistanceTelemetreCentre" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Distance télémètre Gauche:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxDistanceTelemetreGauche" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Distance télémètre Ext_Gauche:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxDistanceTelemetreExtGauche" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button x:Name="buttonTourneGauche" Content="Tourne Gauche" Width="120" Margin="5" Click="buttonTourneGauche_Click"/>
+                <Button x:Name="buttonTourneDroite" Content="Tourne Droite" Width="120" Margin="5" Click="buttonTourneDroite_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button x:Name="buttonAvance" Content="Avance" Width="120" Margin="5" Click="buttonAvance_Click"/>
+                <Button x:Name="buttonStop" Content="Stop" Width="120" Margin="5" Click="buttonStop_Click"/>
+            </StackPanel>
+            <GroupBox x:Name="groupBoxMoteurs" Header="Valeurs des Moteurs" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Padding="10" Width="349">
+                <StackPanel Orientation="Horizontal" Margin="2,0,-9,0">
+                    <TextBlock Text="Valeur moteur gauche:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textBoxValeurMoteurGauche" Width="39" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                    <TextBlock Text="Valeur moteur droit:" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBox x:Name="textBoxValeurMoteurDroit" Width="39" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">

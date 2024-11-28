@@ -83,6 +83,37 @@ namespace RobotInterface
 
             UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
         }
+        private void buttonStop_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] byteList = Encoding.ASCII.GetBytes("0-0");
+            int msgFunction = 0x0040;
+            int msgPayloadLength = byteList.Length;
+            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+        }
+
+        private void buttonAvance_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] byteList = Encoding.ASCII.GetBytes("20-20");
+            int msgFunction = 0x0040;
+            int msgPayloadLength = byteList.Length;
+            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+        }
+
+        private void buttonTourneGauche_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] byteList = Encoding.ASCII.GetBytes("-20-20");
+            int msgFunction = 0x0040;
+            int msgPayloadLength = byteList.Length;
+            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+        }
+
+        private void buttonTourneDroite_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] byteList = Encoding.ASCII.GetBytes("20--20");
+            int msgFunction = 0x0040;
+            int msgPayloadLength = byteList.Length;
+            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+        }
 
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
         private void TimerAffichage_Tick(object? sender, EventArgs e)
@@ -95,7 +126,7 @@ namespace RobotInterface
                     DecodeMessage(c);
 
                     //textBoxReception.Text += Convert.ToChar(c);
-                    textBoxReception.Text += "0x" + c.ToString("X2") + " ";
+                    //textBoxReception.Text += "0x" + c.ToString("X2") + " ";
                 }
                 textBoxReception.Text += Environment.NewLine;
             }
@@ -114,8 +145,7 @@ namespace RobotInterface
             switch (rcvState)
             {
                 case StateReception.Waiting:
-                    if (c != 0x00 && c != 0xFE)
-                        rcvState = StateReception.FunctionMSB;
+                    rcvState = StateReception.FunctionMSB;
                     break;
 
                 case StateReception.FunctionMSB:
@@ -138,7 +168,6 @@ namespace RobotInterface
                     msgDecodedPayload = new byte[msgDecodedPayloadLength];
                     msgDecodedPayloadIndex = 0;
                     rcvState = StateReception.Payload;
-                    textBoxReception.Text += "Payload Length: " + msgDecodedPayloadLength + Environment.NewLine;
                     break;
 
                 case StateReception.Payload:
@@ -155,11 +184,8 @@ namespace RobotInterface
 
                     if (calculatedChecksum == receivedChecksum)
                     {
-                        correct_message = true;
-                    }
-                    else
-                    {
-                        correct_message = false;
+                        ProcessMessage();
+
                     }
 
                     rcvState = StateReception.Waiting;
@@ -180,14 +206,14 @@ namespace RobotInterface
             textBoxEmission.Text = "";
             if (value.Length > 0)
             {
-                value = value.Replace("\r", "").Replace("\n", "").Replace(" ", "");
+                value = value.Replace("\r", "").Replace("\n", "");
                 string[] parts = value.Split('/');
                 string message = parts[0];
                 int msgFunction;
 
                 if (parts.Length == 2)
                 {
-                    msgFunction = int.Parse(parts[1]);
+                    msgFunction = Convert.ToInt32(parts[1], 16);
                 }
                 else
                 {
@@ -235,6 +261,47 @@ namespace RobotInterface
             trame[msgPayloadLength + 5] += CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
             serialPort1.Write(trame, 0, trame.Length);
         }
+
+        void ProcessMessage()
+        {
+            switch (msgDecodedFunction)
+            {
+                case 0x0080:
+                    string message = Encoding.ASCII.GetString(msgDecodedPayload);
+                    textBoxReception.Text += message;
+                    break;
+
+                case 0x0030:
+                    string mesure = Encoding.ASCII.GetString(msgDecodedPayload);
+                    textBoxReception.Text += mesure;
+                    string[] mesures = mesure.Split('-');
+                    if (mesures.Length == 5)
+                    {
+                        textBoxDistanceTelemetreExtGauche.Text = mesures[0] + " cm";
+                        textBoxDistanceTelemetreGauche.Text = mesures[1] + " cm";
+                        textBoxDistanceTelemetreCentre.Text = mesures[2] + " cm";
+                        textBoxDistanceTelemetreDroit.Text = mesures[3] + " cm";
+                        textBoxDistanceTelemetreExtDroit.Text = mesures[4] + " cm";
+                    }
+                    break;
+
+                case 0x0040:
+                    string vitesse = Encoding.ASCII.GetString(msgDecodedPayload);
+                    textBoxReception.Text += vitesse;
+                    string[] vitesses = vitesse.Split('-');
+                    if (vitesses.Length == 2)
+                    {
+                        textBoxValeurMoteurGauche.Text = vitesses[0] + " %";
+                        textBoxValeurMoteurDroit.Text = vitesses[1] + " %";
+                    }
+                    break;
+                    
+                default:
+                    textBoxReception.Text += "Fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
+                    break;
+            }
+        }
+
 
     }
 }
