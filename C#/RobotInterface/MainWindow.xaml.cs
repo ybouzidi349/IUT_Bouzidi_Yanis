@@ -30,7 +30,7 @@ namespace RobotInterface
         int msgDecodedPayloadLength = 0;
         byte[] msgDecodedPayload = new byte[0];
         int msgDecodedPayloadIndex = 0;
-        bool correct_message = false;
+        bool isAutomatiqueActive = false;
 
         public enum StateReception
         {
@@ -61,27 +61,19 @@ namespace RobotInterface
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
             SendMessage();
+            SendCommand();
         }
 
         private void textBoxEmission_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
                 SendMessage();
+
         }
 
         private void buttonClear_Click(object sender, RoutedEventArgs e)
         {
             textBoxReception.Text = "";
-        }
-
-        private void buttonTest_Click(object sender, RoutedEventArgs e)
-        {
-            byte[] byteList = Encoding.ASCII.GetBytes("Bonjour");
-
-            int msgFunction = 0x0080;
-            int msgPayloadLength = byteList.Length;
-
-            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
         }
         private void buttonStop_Click(object sender, RoutedEventArgs e)
         {
@@ -113,6 +105,34 @@ namespace RobotInterface
             int msgFunction = 0x0040;
             int msgPayloadLength = byteList.Length;
             UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+        }
+
+        private void buttonAutomatique_Click(object sender, RoutedEventArgs e)
+        {
+            isAutomatiqueActive = !isAutomatiqueActive;
+            if (isAutomatiqueActive)
+            {
+                buttonAutomatique.Background = Brushes.Green;
+            }
+            else
+            {
+                buttonAutomatique.Background = Brushes.Red;
+            }
+
+            if (isAutomatiqueActive)
+            {
+                byte[] byteList = Encoding.ASCII.GetBytes("1");
+                int msgFunction = 0x0050;
+                int msgPayloadLength = byteList.Length;
+                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+            }
+            else
+            {
+                byte[] byteList = Encoding.ASCII.GetBytes("0");
+                int msgFunction = 0x0050;
+                int msgPayloadLength = byteList.Length;
+                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+            }
         }
 
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
@@ -185,8 +205,12 @@ namespace RobotInterface
                     if (calculatedChecksum == receivedChecksum)
                     {
                         ProcessMessage();
-
                     }
+                    else
+                    {
+                        textBoxReception.Text += "Checksum error";
+                    }
+
 
                     rcvState = StateReception.Waiting;
                     msgDecodedPayloadIndex = 0;
@@ -223,6 +247,23 @@ namespace RobotInterface
                 byte[] byteList = Encoding.ASCII.GetBytes(message);
                 int msgPayloadLength = byteList.Length;
 
+                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+            }
+        }
+
+        private void SendCommand()
+        {
+            string value1 = textBoxVitesseMoteurGauche.Text;
+            textBoxVitesseMoteurGauche.Text = "";
+            string value2 = textBoxVitesseMoteurDroit.Text;
+            textBoxVitesseMoteurDroit.Text = "";
+
+            if (value1.Length > 0 && value2.Length > 0)
+            {
+                string message = value1 + "-" + value2;
+                byte[] byteList = Encoding.ASCII.GetBytes(message);
+                int msgFunction = 0x0040;
+                int msgPayloadLength = byteList.Length;
                 UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
             }
         }
@@ -289,15 +330,27 @@ namespace RobotInterface
                     string vitesse = Encoding.ASCII.GetString(msgDecodedPayload);
                     textBoxReception.Text += vitesse;
                     string[] vitesses = vitesse.Split('-');
-                    if (vitesses.Length == 2)
+                    if (vitesses[0] == "")
+                    {
+                        textBoxValeurMoteurGauche.Text = "-" + vitesses[1] + " %";
+                        if (vitesses[2] == "")
+                            textBoxValeurMoteurDroit.Text = "-" + vitesses[3] + "%";
+                        else
+                            textBoxValeurMoteurDroit.Text = vitesses[2] + "%";
+                    }
+                    else
                     {
                         textBoxValeurMoteurGauche.Text = vitesses[0] + " %";
-                        textBoxValeurMoteurDroit.Text = vitesses[1] + " %";
+                        if (vitesses[1] == "")
+                            textBoxValeurMoteurDroit.Text = "-" + vitesses[2] + "%";
+                        else
+                            textBoxValeurMoteurDroit.Text = vitesses[1] + "%";
                     }
                     break;
-                    
+
                 default:
-                    textBoxReception.Text += "Fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
+                    textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
+                    textBoxReception.Text += " / fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
                     break;
             }
         }
