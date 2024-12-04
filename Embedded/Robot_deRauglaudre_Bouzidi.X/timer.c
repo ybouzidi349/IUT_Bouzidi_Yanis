@@ -11,6 +11,7 @@
 unsigned char toggle = 0;
 unsigned long timestamp = 0;
 unsigned long tempAction = 0;
+unsigned long _millis = 0;
 ////////////////////Initialisation du timer 23 (32 bits)/////////////////////
 
 void InitTimer23(void) {
@@ -86,6 +87,7 @@ void InitTimer4(void) {
 void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     timestamp ++;
     tempAction++;
+    _millis++;
     ADC1StartConversionSequence();
     OperatingSystemLoop();
     IFS1bits.T4IF = 0;

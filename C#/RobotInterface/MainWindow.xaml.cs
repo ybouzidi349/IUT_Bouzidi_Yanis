@@ -46,7 +46,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM8", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM25", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -61,7 +61,8 @@ namespace RobotInterface
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
             SendMessage();
-            SendCommand();
+            // ajouter front montant pour envoyer la commande 
+            //SendCommand();
         }
 
         private void textBoxEmission_KeyUp(object sender, KeyEventArgs e)
@@ -117,21 +118,6 @@ namespace RobotInterface
             else
             {
                 buttonAutomatique.Background = Brushes.Red;
-            }
-
-            if (isAutomatiqueActive)
-            {
-                byte[] byteList = Encoding.ASCII.GetBytes("1");
-                int msgFunction = 0x0050;
-                int msgPayloadLength = byteList.Length;
-                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
-            }
-            else
-            {
-                byte[] byteList = Encoding.ASCII.GetBytes("0");
-                int msgFunction = 0x0050;
-                int msgPayloadLength = byteList.Length;
-                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
             }
         }
 
@@ -210,7 +196,6 @@ namespace RobotInterface
                     {
                         textBoxReception.Text += "Checksum error";
                     }
-
 
                     rcvState = StateReception.Waiting;
                     msgDecodedPayloadIndex = 0;
@@ -308,44 +293,18 @@ namespace RobotInterface
             switch (msgDecodedFunction)
             {
                 case 0x0080:
-                    string message = Encoding.ASCII.GetString(msgDecodedPayload);
-                    textBoxReception.Text += message;
+                    textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
                     break;
 
                 case 0x0030:
-                    string mesure = Encoding.ASCII.GetString(msgDecodedPayload);
-                    textBoxReception.Text += mesure;
-                    string[] mesures = mesure.Split('-');
-                    if (mesures.Length == 5)
-                    {
-                        textBoxDistanceTelemetreExtGauche.Text = mesures[0] + " cm";
-                        textBoxDistanceTelemetreGauche.Text = mesures[1] + " cm";
-                        textBoxDistanceTelemetreCentre.Text = mesures[2] + " cm";
-                        textBoxDistanceTelemetreDroit.Text = mesures[3] + " cm";
-                        textBoxDistanceTelemetreExtDroit.Text = mesures[4] + " cm";
-                    }
+                    textBoxDistanceTelemetreExtGauche.Text = msgDecodedPayload[0] + " cm";
+                    textBoxDistanceTelemetreGauche.Text = msgDecodedPayload[1] + " cm";
+                    textBoxDistanceTelemetreCentre.Text = msgDecodedPayload[2] + " cm";
+                    textBoxDistanceTelemetreDroit.Text = msgDecodedPayload[3] + " cm";
+                    textBoxDistanceTelemetreExtDroit.Text = msgDecodedPayload[4] + " cm";
                     break;
 
                 case 0x0040:
-                    string vitesse = Encoding.ASCII.GetString(msgDecodedPayload);
-                    textBoxReception.Text += vitesse;
-                    string[] vitesses = vitesse.Split('-');
-                    if (vitesses[0] == "")
-                    {
-                        textBoxValeurMoteurGauche.Text = "-" + vitesses[1] + " %";
-                        if (vitesses[2] == "")
-                            textBoxValeurMoteurDroit.Text = "-" + vitesses[3] + "%";
-                        else
-                            textBoxValeurMoteurDroit.Text = vitesses[2] + "%";
-                    }
-                    else
-                    {
-                        textBoxValeurMoteurGauche.Text = vitesses[0] + " %";
-                        if (vitesses[1] == "")
-                            textBoxValeurMoteurDroit.Text = "-" + vitesses[2] + "%";
-                        else
-                            textBoxValeurMoteurDroit.Text = vitesses[1] + "%";
-                    }
                     break;
 
                 default:

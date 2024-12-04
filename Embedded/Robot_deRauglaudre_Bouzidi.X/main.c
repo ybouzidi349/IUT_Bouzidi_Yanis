@@ -14,11 +14,14 @@
 #include "uart.h"
 #include "CB_TX1.h"
 #include "CB_RX1.h"
+#include "UART_Protocol.h"
 
 unsigned char stateRobot = STATE_NULL;
 unsigned char nextStateRobot = 0;
 unsigned char lastStateRobot = 0;
 float vitesse;
+unsigned int last;
+int automatique = 0;
 
 int main(void) {
     InitOscillator();
@@ -32,31 +35,46 @@ int main(void) {
 
     while (1) {
 
-        if ((robotState.distanceTelemetreCentre < 60
-                || robotState.distanceTelemetreGauche < 60
-                || robotState.distanceTelemetreDroit < 60
-                || robotState.distanceTelemetreExtDroit < 50
-                || robotState.distanceTelemetreExtGauche < 50))
-            vitesse = 17;
-        else
-            vitesse = VITESSE_ROBOT;
-
+        if (automatique) {
+            if ((robotState.distanceTelemetreCentre < 60
+                    || robotState.distanceTelemetreGauche < 60
+                    || robotState.distanceTelemetreDroit < 60
+                    || robotState.distanceTelemetreExtDroit < 50
+                    || robotState.distanceTelemetreExtGauche < 50))
+                vitesse = 17;
+            else
+                vitesse = VITESSE_ROBOT;
+        }
 
         if (BP1 != 0) {
             stateRobot = STATE_ATTENTE;
+            automatique = 1;
+            tempAction = 0;
         }
 
         if (BP2 != 0 || tempAction > 60000)
             stateRobot = STATE_NULL;
+        
 
-        //SendMessage((unsigned char*) "Bonjour", 7);
+        /*
+                for (int i = 0; i < CB_RX1_GetDataSize(); i++) {
+                    unsigned char c = CB_RX1_Get();
+                    UartDecodeMessage(c);
+                }
+         */
+        //__delay32(20000);
 
-        int i;
-        for (i = 0; i < CB_RX1_GetDataSize(); i++) {
-            unsigned char c = CB_RX1_Get();
-            SendMessage(&c, 1);
+        if (_millis - last >= 1000) {
+            unsigned char message[9];
+            message[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
+            message[1] = (unsigned char) (robotState.distanceTelemetreGauche);
+            message[2] = (unsigned char) (robotState.distanceTelemetreCentre);
+            message[3] = (unsigned char) (robotState.distanceTelemetreDroit);
+            message[4] = (unsigned char) (robotState.distanceTelemetreExtDroit);
+
+            UartEncodeAndSendMessage(0x0030, 5, message);
+            last = _millis;
         }
-        __delay32(20000);
 
         ft_LED();
     }

@@ -1,6 +1,8 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
+void SetControlMotor(unsigned char* payload);
+
 typedef struct robotStateBITS { 
 union {
 

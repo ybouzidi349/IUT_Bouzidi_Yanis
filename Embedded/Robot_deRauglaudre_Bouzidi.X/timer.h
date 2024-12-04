@@ -9,5 +9,6 @@
     
     extern unsigned long timestamp;
     extern unsigned long tempAction;
+    extern unsigned long _millis;
     
 #endif /* TIMER_H */
