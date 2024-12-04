@@ -88,8 +88,11 @@ void __attribute__((interrupt, no_auto_psv)) _T4Interrupt(void) {
     timestamp ++;
     tempAction++;
     _millis++;
+    
     ADC1StartConversionSequence();
+    Infrarouge_Conversion();
     OperatingSystemLoop();
+    
     IFS1bits.T4IF = 0;
 }
 

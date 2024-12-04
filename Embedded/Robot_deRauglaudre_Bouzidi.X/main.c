@@ -54,17 +54,8 @@ int main(void) {
 
         if (BP2 != 0 || tempAction > 60000)
             stateRobot = STATE_NULL;
-        
-
-        /*
-                for (int i = 0; i < CB_RX1_GetDataSize(); i++) {
-                    unsigned char c = CB_RX1_Get();
-                    UartDecodeMessage(c);
-                }
-         */
-        //__delay32(20000);
-
-        if (_millis - last >= 1000) {
+       
+        if (_millis - last > 1000) {
             unsigned char message[9];
             message[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
             message[1] = (unsigned char) (robotState.distanceTelemetreGauche);
@@ -73,6 +64,7 @@ int main(void) {
             message[4] = (unsigned char) (robotState.distanceTelemetreExtDroit);
 
             UartEncodeAndSendMessage(0x0030, 5, message);
+
             last = _millis;
         }
 
@@ -149,8 +141,6 @@ void SetNextRobotStateInAutomaticMode() {
     } else {
         lastStateRobot = nextStateRobot;
     }
-
-
 }
 
 char Operating(unsigned char binary) {
@@ -207,7 +197,6 @@ char Operating(unsigned char binary) {
 }
 
 unsigned char StateBinary() {
-    Infrarouge_Conversion();
     return (BinaryCapteur(robotState.distanceTelemetreExtGauche, DISTANCE_LIM_EXT) << 4 |
             BinaryCapteur(robotState.distanceTelemetreGauche, DISTANCE_LIM) << 3 |
             BinaryCapteur(robotState.distanceTelemetreCentre, DISTANCE_LIM_CENTRE) << 2 |

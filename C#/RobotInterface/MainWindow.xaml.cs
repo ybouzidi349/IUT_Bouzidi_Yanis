@@ -78,34 +78,46 @@ namespace RobotInterface
         }
         private void buttonStop_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = Encoding.ASCII.GetBytes("0-0");
+            byte[] byteList = new byte[2];
+            byteList[0] = 0;
+            byteList[1] = 0;
+
             int msgFunction = 0x0040;
-            int msgPayloadLength = byteList.Length;
-            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+
+            UartEncodeAndSendMessage(msgFunction, 2, byteList);
         }
 
         private void buttonAvance_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = Encoding.ASCII.GetBytes("20-20");
+            byte[] byteList = new byte[2];
+            byteList[0] = 20;
+            byteList[1] = 20;
+
             int msgFunction = 0x0040;
-            int msgPayloadLength = byteList.Length;
-            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+
+            UartEncodeAndSendMessage(msgFunction, 2, byteList);
         }
 
         private void buttonTourneGauche_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = Encoding.ASCII.GetBytes("-20-20");
+            byte[] byteList = new byte[2];
+            byteList[0] = 0;
+            byteList[1] = 20;
+
             int msgFunction = 0x0040;
-            int msgPayloadLength = byteList.Length;
-            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+
+            UartEncodeAndSendMessage(msgFunction, 2, byteList);
         }
 
         private void buttonTourneDroite_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = Encoding.ASCII.GetBytes("20--20");
+            byte[] byteList = new byte[2];
+            byteList[0] = 20;
+            byteList[1] = 0;
+
             int msgFunction = 0x0040;
-            int msgPayloadLength = byteList.Length;
-            UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
+
+            UartEncodeAndSendMessage(msgFunction, 2, byteList);
         }
 
         private void buttonAutomatique_Click(object sender, RoutedEventArgs e)
@@ -296,15 +308,17 @@ namespace RobotInterface
                     textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
                     break;
 
+                case 0x0040:
+                    textBoxValeurMoteurGauche.Text = msgDecodedPayload[0] + " %";
+                    textBoxValeurMoteurGauche.Text = msgDecodedPayload[1] + " %";
+                    break;
+
                 case 0x0030:
                     textBoxDistanceTelemetreExtGauche.Text = msgDecodedPayload[0] + " cm";
                     textBoxDistanceTelemetreGauche.Text = msgDecodedPayload[1] + " cm";
                     textBoxDistanceTelemetreCentre.Text = msgDecodedPayload[2] + " cm";
                     textBoxDistanceTelemetreDroit.Text = msgDecodedPayload[3] + " cm";
                     textBoxDistanceTelemetreExtDroit.Text = msgDecodedPayload[4] + " cm";
-                    break;
-
-                case 0x0040:
                     break;
 
                 default:
