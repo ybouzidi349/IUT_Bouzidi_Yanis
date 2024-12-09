@@ -69,12 +69,6 @@
                         <TextBlock Text="Valeur moteur droit:" VerticalAlignment="Center" Margin="10,0,0,0"/>
                         <TextBox x:Name="textBoxValeurMoteurDroit" Width="39" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2,10,0,0" Width="328">
-                        <TextBlock Text="Vitesse moteur gauche:" VerticalAlignment="Center"/>
-                        <TextBox x:Name="textBoxVitesseMoteurGauche" Width="33" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                        <TextBlock Text="Vitesse moteur droit:" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <TextBox x:Name="textBoxVitesseMoteurDroit" Width="33" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                    </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

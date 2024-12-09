@@ -31,6 +31,7 @@ namespace RobotInterface
         byte[] msgDecodedPayload = new byte[0];
         int msgDecodedPayloadIndex = 0;
         bool isAutomatiqueActive = false;
+        private const int MaxQueueSize = 1000; // Limite de la taille de la file d'attente
 
         public enum StateReception
         {
@@ -40,13 +41,13 @@ namespace RobotInterface
             PayloadLengthMSB,
             PayloadLengthLSB,
             Payload,
-            CheckSum
+            CheckSum,
         }
 
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM25", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM11", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -61,8 +62,6 @@ namespace RobotInterface
         private void buttonEnvoyer_Click(object sender, RoutedEventArgs e)
         {
             SendMessage();
-            // ajouter front montant pour envoyer la commande 
-            //SendCommand();
         }
 
         private void textBoxEmission_KeyUp(object sender, KeyEventArgs e)
@@ -140,21 +139,22 @@ namespace RobotInterface
             {
                 while (robot.byteListReceived.Count > 0)
                 {
-                    var c = robot.byteListReceived.Dequeue();
-                    DecodeMessage(c);
-
                     //textBoxReception.Text += Convert.ToChar(c);
                     //textBoxReception.Text += "0x" + c.ToString("X2") + " ";
+                    var c = robot.byteListReceived.Dequeue();
+                    DecodeMessage(c);
                 }
-                textBoxReception.Text += Environment.NewLine;
             }
         }
 
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
         {
-            for (int i = 0; i < e.Data.Length; i++)
+            if (e.Data != null)
             {
-                robot.byteListReceived.Enqueue(e.Data[i]);
+                for (int i = 0; i < e.Data.Length; i++)
+                {
+                    robot.byteListReceived.Enqueue(e.Data[i]);
+                }
             }
         }
 
@@ -248,23 +248,6 @@ namespace RobotInterface
             }
         }
 
-        private void SendCommand()
-        {
-            string value1 = textBoxVitesseMoteurGauche.Text;
-            textBoxVitesseMoteurGauche.Text = "";
-            string value2 = textBoxVitesseMoteurDroit.Text;
-            textBoxVitesseMoteurDroit.Text = "";
-
-            if (value1.Length > 0 && value2.Length > 0)
-            {
-                string message = value1 + "-" + value2;
-                byte[] byteList = Encoding.ASCII.GetBytes(message);
-                int msgFunction = 0x0040;
-                int msgPayloadLength = byteList.Length;
-                UartEncodeAndSendMessage(msgFunction, msgPayloadLength, byteList);
-            }
-        }
-
         byte CalculateChecksum(int msgFunction, int msgPayloadLength, byte[] msgPayload)
         {
             byte checksum = 0;
@@ -296,7 +279,7 @@ namespace RobotInterface
                 trame[i + 5] = msgPayload[i];
             }
 
-            trame[msgPayloadLength + 5] += CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
+            trame[msgPayloadLength + 5] = CalculateChecksum(msgFunction, msgPayloadLength, msgPayload);
             serialPort1.Write(trame, 0, trame.Length);
         }
 
@@ -306,11 +289,12 @@ namespace RobotInterface
             {
                 case 0x0080:
                     textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
+                    textBoxReception.Text += Environment.NewLine;
                     break;
 
                 case 0x0040:
                     textBoxValeurMoteurGauche.Text = msgDecodedPayload[0] + " %";
-                    textBoxValeurMoteurGauche.Text = msgDecodedPayload[1] + " %";
+                    textBoxValeurMoteurDroit.Text = msgDecodedPayload[1] + " %";
                     break;
 
                 case 0x0030:
@@ -324,6 +308,7 @@ namespace RobotInterface
                 default:
                     textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
                     textBoxReception.Text += " / fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
+                    textBoxReception.Text += Environment.NewLine;
                     break;
             }
         }
