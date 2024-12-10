@@ -47,7 +47,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM8", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -77,46 +77,46 @@ namespace RobotInterface
         }
         private void buttonStop_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = new byte[2];
+            sbyte[] byteList = new sbyte[2];
             byteList[0] = 0;
             byteList[1] = 0;
 
             int msgFunction = 0x0040;
 
-            UartEncodeAndSendMessage(msgFunction, 2, byteList);
+            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
         }
 
         private void buttonAvance_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = new byte[2];
+            sbyte[] byteList = new sbyte[2];
             byteList[0] = 20;
             byteList[1] = 20;
 
             int msgFunction = 0x0040;
 
-            UartEncodeAndSendMessage(msgFunction, 2, byteList);
+            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
         }
 
         private void buttonTourneGauche_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = new byte[2];
-            byteList[0] = 0;
+            sbyte[] byteList = new sbyte[2];
+            byteList[0] = -20;
             byteList[1] = 20;
 
             int msgFunction = 0x0040;
 
-            UartEncodeAndSendMessage(msgFunction, 2, byteList);
+            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
         }
 
         private void buttonTourneDroite_Click(object sender, RoutedEventArgs e)
         {
-            byte[] byteList = new byte[2];
+            sbyte[] byteList = new sbyte[2];
             byteList[0] = 20;
-            byteList[1] = 0;
+            byteList[1] = -20;
 
             int msgFunction = 0x0040;
 
-            UartEncodeAndSendMessage(msgFunction, 2, byteList);
+            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
         }
 
         private void buttonAutomatique_Click(object sender, RoutedEventArgs e)
@@ -135,27 +135,31 @@ namespace RobotInterface
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
         private void TimerAffichage_Tick(object? sender, EventArgs e)
         {
-            /*if (robot.byteListReceived.Count > 0)
+            if (robot.byteListReceived.Count > 0)
             {
                 while (robot.byteListReceived.Count > 0)
-                {
+                {   
+                    var c = robot.byteListReceived.Dequeue();
                     //textBoxReception.Text += Convert.ToChar(c);
                     //textBoxReception.Text += "0x" + c.ToString("X2") + " ";
-                    var c = robot.byteListReceived.Dequeue();
                     DecodeMessage(c);
                 }
-                Thread.Sleep(10);
-            }*/
+            }
         }
 
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
         {
-           
-                for (int i = 0; i < e.Data.Length; i++)
+            for (int i = 0; i < e.Data.Length; i++)
+            {
+                if (robot.byteListReceived.Count < MaxQueueSize)
                 {
-                 //robot.byteListReceived.Enqueue(e.Data[i]);
-                 DecodeMessage(e.Data[i]);
+                    robot.byteListReceived.Enqueue(e.Data[i]);
                 }
+                else
+                {
+                    break;
+                }
+            }
         }
 
         private void DecodeMessage(byte c)
@@ -189,10 +193,17 @@ namespace RobotInterface
                     break;
 
                 case StateReception.Payload:
-                    msgDecodedPayload[msgDecodedPayloadIndex++] = c;
-                    if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
+                    if (msgDecodedPayloadIndex < msgDecodedPayload.Length)
                     {
-                        rcvState = StateReception.CheckSum;
+                        msgDecodedPayload[msgDecodedPayloadIndex++] = c;
+                        if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
+                        {
+                            rcvState = StateReception.CheckSum;
+                        }
+                    }
+                    else
+                    {
+                        rcvState = StateReception.Waiting;
                     }
                     break;
 
@@ -295,8 +306,8 @@ namespace RobotInterface
                         break;
 
                     case 0x0040:
-                        textBoxValeurMoteurGauche.Text = msgDecodedPayload[0] + " %";
-                        textBoxValeurMoteurDroit.Text = msgDecodedPayload[1] + " %";
+                        textBoxValeurMoteurGauche.Text = ((sbyte)msgDecodedPayload[0]) + " %";
+                        textBoxValeurMoteurDroit.Text = ((sbyte)msgDecodedPayload[1]) + " %";
                         break;
 
                     case 0x0030:
