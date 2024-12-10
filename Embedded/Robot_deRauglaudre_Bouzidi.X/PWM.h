@@ -10,7 +10,6 @@
 void InitPWM(void);
 void PWMUpdateSpeed(void);
 void PWMSetSpeedConsigne(float vitesseEnPourcents, int moteur);
-void PWMSlowDown(float deceleration);
 
 
 #endif

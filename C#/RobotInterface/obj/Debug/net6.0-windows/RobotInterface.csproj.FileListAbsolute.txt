@@ -68,4 +68,5 @@ C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.pdb
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.genruntimeconfig.cache
 C:\Users\Bosco drg\Desktop\Robot_GEII\C#\RobotInterface\obj\Debug\net6.0-windows\ref\RobotInterface.dll
-C:\GitHub\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.csproj.CopyComplete
+C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInterface.sourcelink.json
+C:\Github\IUT_Bouzidi_Yanis\C#\RobotInterface\obj\Debug\net6.0-windows\RobotInt.E07FE793.Up2Date

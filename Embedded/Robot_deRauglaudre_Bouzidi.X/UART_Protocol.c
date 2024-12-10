@@ -1,7 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <xc.h>
-#include "UART_Protocol.h"
-#include "CB_TX1.h"
+#include <libpic30.h>
+
+#include "ChipConfig.h"
+#include "IO.h"
+#include "timer.h"
+#include "ADC.h"
+#include "Toolbox.h"
+#include "PWM.h"
+#include "main.h"
 #include "robot.h"
+#include "uart.h"
+#include "CB_TX1.h"
+#include "CB_RX1.h"
+#include "UART_Protocol.h"
 
 int msgDecodedFunction = 0;
 int msgDecodedPayloadLength = 0;
@@ -44,62 +57,60 @@ void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, unsigned ch
 }
 
 void UartDecodeMessage(unsigned char c) {
-
+    
     switch (rcvState) {
-        case 0:
-            rcvState = 1;
-            break;
-
-        case 1:
-            msgDecodedFunction = c << 8;
-            rcvState = 2;
-            break;
-
-        case 2:
-            msgDecodedFunction |= c;
-            rcvState = 3;
-            break;
-
-        case 3:
-            msgDecodedPayloadLength = c << 8;
-            rcvState = 4;
-            break;
-
-        case 4:
-            msgDecodedPayloadLength |= c;
+        case RCV_STATE_WAITING:
+            if (c == 0xFE) rcvState = RCV_STATE_FUNCTION_MSB;
+            msgDecodedPayloadLength = 0;
             msgDecodedPayloadIndex = 0;
-            rcvState = 5;
+            msgDecodedFunction = 0;
             break;
 
-        case 5:
+        case RCV_STATE_FUNCTION_MSB:
+            msgDecodedFunction = c << 8;
+            rcvState = RCV_STATE_FUNCTION_LSB;
+            break;
+
+        case RCV_STATE_FUNCTION_LSB:
+            msgDecodedFunction |= c;
+            rcvState = RCV_STATE_LENGTH_MSB;
+            break;
+
+        case RCV_STATE_LENGTH_MSB:
+            msgDecodedPayloadLength = c << 8;
+            rcvState = RCV_STATE_LENGTH_LSB;
+            break;
+
+        case RCV_STATE_LENGTH_LSB:
+            msgDecodedPayloadLength |= c;
+
+            rcvState = RCV_STATE_PAYLOAD;
+            break;
+
+        case RCV_STATE_PAYLOAD:
             msgDecodedPayload[msgDecodedPayloadIndex++] = c;
-            if (msgDecodedPayloadIndex == msgDecodedPayloadLength) {
-                rcvState = 6;
-            }
+            if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
+                rcvState = RCV_STATE_CHECKSUM;
             break;
 
-        case 6:
-            calculatedChecksum = UartCalculateChecksum(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
-
-            if (calculatedChecksum == c) {
+        case RCV_STATE_CHECKSUM:
+            if (UartCalculateChecksum(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload) == c) {
                 UartProcessDecodedMessage(msgDecodedFunction, msgDecodedPayloadLength, msgDecodedPayload);
             }
-
-            rcvState = 0;
-            msgDecodedPayloadIndex = 0;
+            rcvState = RCV_STATE_WAITING;
             break;
 
         default:
-            rcvState = 0;
+            rcvState = RCV_STATE_WAITING;
             break;
     }
 }
 
 void UartProcessDecodedMessage(int function, int payloadLength, unsigned char* payload) {
+    
+UartEncodeAndSendMessage(function, payloadLength, payload);
 
-    UartEncodeAndSendMessage(function, payloadLength, payload);
-
-    /*switch (function) {
+    switch (function) {
         case SET_ROBOT_STATE:
             //SetRobotState(msgPayload[0]);
             break;
@@ -108,13 +119,15 @@ void UartProcessDecodedMessage(int function, int payloadLength, unsigned char* p
             //SetRobotAutoControlState(msgPayload[0]);
             break;
 
-        case SET_ROBOT_MOTOR:
-
-            
+        case 0x0040:
+            // mettre a jour une variable de vitesse externe
+            PWMSetSpeedConsigne(20,MOTEUR_GAUCHE);
+            PWMSetSpeedConsigne(20,MOTEUR_DROIT);
             break;
 
         default:
+
             break;
-    }*/
+    }
 
 }

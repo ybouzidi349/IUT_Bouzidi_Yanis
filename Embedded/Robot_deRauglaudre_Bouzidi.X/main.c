@@ -35,7 +35,13 @@ int main(void) {
 
     while (1) {
 
-        if (automatique) {
+        for (int i = 0; i < CB_RX1_GetDataSize(); i++) {
+            unsigned char c = CB_RX1_Get();
+            UartDecodeMessage(c);
+        }
+        
+        
+        /*if (automatique) {
             if ((robotState.distanceTelemetreCentre < 60
                     || robotState.distanceTelemetreGauche < 60
                     || robotState.distanceTelemetreDroit < 60
@@ -53,9 +59,9 @@ int main(void) {
         }
 
         if (BP2 != 0 || tempAction > 60000)
-            stateRobot = STATE_NULL;
-       
-        if (_millis - last > 1000) {
+            stateRobot = STATE_NULL;*/
+
+        if (_millis - last > 5000) {
             unsigned char message[9];
             message[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
             message[1] = (unsigned char) (robotState.distanceTelemetreGauche);
