@@ -9,6 +9,7 @@ char Operating(unsigned char binary);
 unsigned char BinaryCapteur(float capteur, int val);
 unsigned char StateBinary(void);
 void ft_LED(void);
+void ft_send_info(void);
 
 
  /////////////////////MODIF/////////////////////

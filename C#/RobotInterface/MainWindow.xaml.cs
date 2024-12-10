@@ -135,7 +135,7 @@ namespace RobotInterface
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
         private void TimerAffichage_Tick(object? sender, EventArgs e)
         {
-            if (robot.byteListReceived.Count > 0)
+            /*if (robot.byteListReceived.Count > 0)
             {
                 while (robot.byteListReceived.Count > 0)
                 {
@@ -144,7 +144,8 @@ namespace RobotInterface
                     var c = robot.byteListReceived.Dequeue();
                     DecodeMessage(c);
                 }
-            }
+                Thread.Sleep(10);
+            }*/
         }
 
         private async void SerialPort1_DataReceived(object? sender, DataReceivedArgs e)
@@ -152,7 +153,8 @@ namespace RobotInterface
            
                 for (int i = 0; i < e.Data.Length; i++)
                 {
-                 robot.byteListReceived.Enqueue(e.Data[i]);
+                 //robot.byteListReceived.Enqueue(e.Data[i]);
+                 DecodeMessage(e.Data[i]);
                 }
         }
 
@@ -283,32 +285,35 @@ namespace RobotInterface
 
         void ProcessMessage()
         {
-            switch (msgDecodedFunction)
+            Dispatcher.BeginInvoke(new Action(() =>
             {
-                case 0x0080:
-                    textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
-                    textBoxReception.Text += Environment.NewLine;
-                    break;
+                switch (msgDecodedFunction)
+                {
+                    case 0x0080:
+                        textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
+                        textBoxReception.Text += Environment.NewLine;
+                        break;
 
-                case 0x0040:
-                    textBoxValeurMoteurGauche.Text = msgDecodedPayload[0] + " %";
-                    textBoxValeurMoteurDroit.Text = msgDecodedPayload[1] + " %";
-                    break;
+                    case 0x0040:
+                        textBoxValeurMoteurGauche.Text = msgDecodedPayload[0] + " %";
+                        textBoxValeurMoteurDroit.Text = msgDecodedPayload[1] + " %";
+                        break;
 
-                case 0x0030:
-                    textBoxDistanceTelemetreExtGauche.Text = msgDecodedPayload[0] + " cm";
-                    textBoxDistanceTelemetreGauche.Text = msgDecodedPayload[1] + " cm";
-                    textBoxDistanceTelemetreCentre.Text = msgDecodedPayload[2] + " cm";
-                    textBoxDistanceTelemetreDroit.Text = msgDecodedPayload[3] + " cm";
-                    textBoxDistanceTelemetreExtDroit.Text = msgDecodedPayload[4] + " cm";
-                    break;
+                    case 0x0030:
+                        textBoxDistanceTelemetreExtGauche.Text = msgDecodedPayload[0] + " cm";
+                        textBoxDistanceTelemetreGauche.Text = msgDecodedPayload[1] + " cm";
+                        textBoxDistanceTelemetreCentre.Text = msgDecodedPayload[2] + " cm";
+                        textBoxDistanceTelemetreDroit.Text = msgDecodedPayload[3] + " cm";
+                        textBoxDistanceTelemetreExtDroit.Text = msgDecodedPayload[4] + " cm";
+                        break;
 
-                default:
-                    textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
-                    textBoxReception.Text += " / fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
-                    textBoxReception.Text += Environment.NewLine;
-                    break;
-            }
+                    default:
+                        textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
+                        textBoxReception.Text += " / fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
+                        textBoxReception.Text += Environment.NewLine;
+                        break;
+                }
+            }));
         }
 
 

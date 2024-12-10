@@ -1,20 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <xc.h>
-#include <libpic30.h>
-
-#include "ChipConfig.h"
-#include "IO.h"
-#include "timer.h"
-#include "ADC.h"
-#include "Toolbox.h"
-#include "PWM.h"
-#include "main.h"
-#include "robot.h"
-#include "uart.h"
+#include "UART_Protocol.h"
 #include "CB_TX1.h"
 #include "CB_RX1.h"
-#include "UART_Protocol.h"
+#include "PWM.h"
+#include "IO.h"
+#include "robot.h"
 
 int msgDecodedFunction = 0;
 int msgDecodedPayloadLength = 0;
@@ -120,9 +110,8 @@ UartEncodeAndSendMessage(function, payloadLength, payload);
             break;
 
         case 0x0040:
-            // mettre a jour une variable de vitesse externe
-            PWMSetSpeedConsigne(20,MOTEUR_GAUCHE);
-            PWMSetSpeedConsigne(20,MOTEUR_DROIT);
+            PWMSetSpeedConsigne(payload[0], MOTEUR_DROIT);
+            PWMSetSpeedConsigne(payload[1], MOTEUR_GAUCHE);
             break;
 
         default:

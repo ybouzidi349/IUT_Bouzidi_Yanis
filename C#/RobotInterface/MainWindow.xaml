@@ -6,77 +6,92 @@
         xmlns:local="clr-namespace:RobotInterface"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" Background="#FFFAFAFA">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <Grid Margin="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <!-- with width-->
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <GroupBox x:Name="groupBox" Header="Emission" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="0" Grid.Row="0" Padding="10">
-            <TextBox x:Name="textBoxEmission" BorderBrush="{x:Null}" Background="{x:Null}" AcceptsReturn="True" KeyUp="textBoxEmission_KeyUp" Padding="5"/>
+        <Grid.RowDefinitions>
+            <!-- with width-->
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="5*" />
+
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="Reception" Grid.Column="1" Grid.Row="0" Header="Reception" Background="#FF79ECC4" BorderBrush="Black">
+            <TextBox x:Name="RichTextBox" Grid.Column="1" Grid.Row="0"  HorizontalAlignment="Stretch" Margin="0" TextWrapping="Wrap" IsReadOnly="True" Text="" TextChanged="TextBox_TextChanged" />
+        </GroupBox>
+        <GroupBox x:Name="Emission" Grid.Column="0" Grid.Row="0" Header="Emission" Background="#FFA41C1C" BorderBrush="Black">
+            <TextBox x:Name="TextBoxEmission" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Stretch"  AcceptsReturn="True"  Margin="0" TextWrapping="Wrap" Text="" KeyUp="TextBoxEmission_KeyUp" />
         </GroupBox>
 
-        <GroupBox x:Name="groupBox1" Header="Réception" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="0" Padding="10">
-            <TextBox x:Name="textBoxReception" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" Padding="5"/>
-        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1"  Grid.Row="1">
+            <Button x:Name ="buttonEnvoyer" Content="Envoyer" Width="60" Margin="5" Click="buttonEnvoyer_Click"/>
+            <Button x:Name ="buttonTest" Content="Test" Width="60" Margin="5" Click="buttonTest_Click"/>
+            <Button x:Name ="buttonClear" Content="Clear" Width="60" Margin="5" Click="buttonClear_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.RowSpan="2">
+            <GroupBox x:Name="Leds"  Header="Leds">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox x:Name="Led1" Content="Led1" HorizontalAlignment="Left" />
+                    <CheckBox x:Name="Led2" Content="Led2" HorizontalAlignment="Left" />
+                    <CheckBox x:Name="Led3" Content="Led3" HorizontalAlignment="Left" />
+                    <CheckBox x:Name="Led4" Content="Led4" HorizontalAlignment="Left" />
+                    <CheckBox x:Name="Led5" Content="Led5" HorizontalAlignment="Left" />
+                </StackPanel>
+            </GroupBox>
+            <GroupBox x:Name="IRTels" Header="Telemetres IR">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-        <GroupBox x:Name="groupBoxCapteurs" Header="Valeurs des Capteurs" Margin="10,10,10,24" Background="#FFDDDDDD" BorderBrush="Black" Grid.Column="1" Grid.Row="1" Padding="10">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <TextBlock Text="Distance télémètre Extérieur Droit:" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxDistanceTelemetreExtDroit" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <TextBlock Text="Distance télémètre Droit:" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxDistanceTelemetreDroit" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <TextBlock Text="Distance télémètre Centre:" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxDistanceTelemetreCentre" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <TextBlock Text="Distance télémètre Gauche:" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxDistanceTelemetreGauche" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <TextBlock Text="Distance télémètre Extérieur Gauche:" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxDistanceTelemetreExtGauche" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                </StackPanel>
-            </StackPanel>
-        </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="IR Plus Gauche :" HorizontalAlignment="Left" />
+                        <Label x:Name="IRpg" Content="..." HorizontalAlignment="Left" />
+                        <Label Content="cm" HorizontalAlignment="Left" />
+                    </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button x:Name="buttonTourneGauche" Content="Tourner à Gauche" Width="120" Margin="5" Click="buttonTourneGauche_Click"/>
-                <Button x:Name="buttonTourneDroite" Content="Tourner à Droite" Width="120" Margin="5" Click="buttonTourneDroite_Click"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button x:Name="buttonAvance" Content="Avancer" Width="120" Margin="5" Click="buttonAvance_Click"/>
-                <Button x:Name="buttonStop" Content="Arrêter" Width="120" Margin="5" Click="buttonStop_Click"/>
-            </StackPanel>
-            <GroupBox x:Name="groupBoxMoteurs" Header="Valeurs des Moteurs" Margin="10" Background="#FFDDDDDD" BorderBrush="Black" Padding="10" Width="349">
-                <StackPanel Margin="0,0,-8,0">
-                    <StackPanel Orientation="Horizontal" Margin="2,0,-9,0">
-                        <TextBlock Text="Valeur moteur gauche:" VerticalAlignment="Center"/>
-                        <TextBox x:Name="textBoxValeurMoteurGauche" Width="39" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
-                        <TextBlock Text="Valeur moteur droit:" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <TextBox x:Name="textBoxValeurMoteurDroit" Width="39" Margin="2" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Content="IR Gauche  :" HorizontalAlignment="Left" />
+                        <Label x:Name="IRg" Content="..." HorizontalAlignment="Left" />
+                        <Label  Content="cm" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="IR Centre :" HorizontalAlignment="Left" />
+                        <Label x:Name="IRc" Content="..." HorizontalAlignment="Left" />
+                        <Label  Content="cm" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Content="IR Droite  :" HorizontalAlignment="Left" />
+                        <Label x:Name="IRd" Content="..." HorizontalAlignment="Left" />
+                        <Label  Content="cm" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Content="IR Plus Droite :" HorizontalAlignment="Left" />
+                        <Label x:Name="IRpd" Content="..." HorizontalAlignment="Left" />
+                        <Label  Content=" cm" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox x:Name="Motors" Header="Moteurs" Width="131">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Content="Vitesse Gauche :" HorizontalAlignment="Left" />
+                        <Label x:Name="vitg" Content="..." HorizontalAlignment="Left" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label  Content="Vitesse Droite :" HorizontalAlignment="Left" />
+                        <Label x:Name="vitd" Content="..." HorizontalAlignment="Left" />
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
-            <Button x:Name="buttonEnvoyer" Content="Envoyer" Width="120" Margin="5" Click="buttonEnvoyer_Click" Style="{StaticResource {x:Type Button}}"/>
-            <Button x:Name="buttonClear" Content="Effacer" Width="120" Margin="5" Click="buttonClear_Click" Style="{StaticResource {x:Type Button}}"/>
-            <Button x:Name="buttonAutomatique" Content="AUTOMATIQUE" Width="120" Margin="5" Click="buttonAutomatique_Click" Background="Red"/>
-        </StackPanel>
+
+
+
+
+
     </Grid>
 </Window>

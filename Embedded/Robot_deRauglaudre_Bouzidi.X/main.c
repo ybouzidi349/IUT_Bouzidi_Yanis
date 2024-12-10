@@ -21,9 +21,9 @@ unsigned char nextStateRobot = 0;
 unsigned char lastStateRobot = 0;
 float vitesse;
 unsigned int last;
-int automatique = 0;
 
-int main(void) {
+int main(void)
+{
     InitOscillator();
     InitIO();
     InitTimer1();
@@ -32,45 +32,31 @@ int main(void) {
     InitPWM();
     InitADC1();
     InitUART();
+    vitesse = VITESSE_ROBOT;
 
-    while (1) {
-
-        for (int i = 0; i < CB_RX1_GetDataSize(); i++) {
-            unsigned char c = CB_RX1_Get();
-            UartDecodeMessage(c);
-        }
-        
-        
-        /*if (automatique) {
-            if ((robotState.distanceTelemetreCentre < 60
-                    || robotState.distanceTelemetreGauche < 60
-                    || robotState.distanceTelemetreDroit < 60
-                    || robotState.distanceTelemetreExtDroit < 50
-                    || robotState.distanceTelemetreExtGauche < 50))
-                vitesse = 17;
-            else
-                vitesse = VITESSE_ROBOT;
-        }
-
-        if (BP1 != 0) {
+    while (1)
+    {
+        if (BP1 != 0)
+        {
             stateRobot = STATE_ATTENTE;
-            automatique = 1;
             tempAction = 0;
+            robotState.mode = 1;
         }
 
         if (BP2 != 0 || tempAction > 60000)
-            stateRobot = STATE_NULL;*/
+        {
+            stateRobot = STATE_NULL;
+            robotState.mode = 0;
+        }
 
-        if (_millis - last > 5000) {
-            unsigned char message[9];
-            message[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
-            message[1] = (unsigned char) (robotState.distanceTelemetreGauche);
-            message[2] = (unsigned char) (robotState.distanceTelemetreCentre);
-            message[3] = (unsigned char) (robotState.distanceTelemetreDroit);
-            message[4] = (unsigned char) (robotState.distanceTelemetreExtDroit);
+        for (int i = 0; i < CB_RX1_GetDataSize(); i++)
+        {
+            UartDecodeMessage(CB_RX1_Get());
+        }
 
-            UartEncodeAndSendMessage(0x0030, 5, message);
-
+        if (_millis - last > 5000)
+        {
+            ft_send_info();
             last = _millis;
         }
 
@@ -78,7 +64,20 @@ int main(void) {
     }
 }
 
-void ft_LED(void) {
+void ft_send_info()
+{
+    unsigned char message[9];
+    message[0] = (unsigned char)(robotState.distanceTelemetreExtGauche);
+    message[1] = (unsigned char)(robotState.distanceTelemetreGauche);
+    message[2] = (unsigned char)(robotState.distanceTelemetreCentre);
+    message[3] = (unsigned char)(robotState.distanceTelemetreDroit);
+    message[4] = (unsigned char)(robotState.distanceTelemetreExtDroit);
+
+    UartEncodeAndSendMessage(0x0030, 5, message);
+}
+
+void ft_LED(void)
+{
     LED_BLANCHE_1 = (robotState.distanceTelemetreExtGauche < DISTANCE_LIM);
     LED_BLEUE_1 = (robotState.distanceTelemetreGauche < DISTANCE_LIM);
     LED_ORANGE_1 = (robotState.distanceTelemetreCentre < DISTANCE_LIM);
@@ -89,120 +88,128 @@ void ft_LED(void) {
     LED_VERTE_2 = LED_ROUGE_2 = LED_ORANGE_2 = LED_BLEUE_2 = LED_BLANCHE_2 = robot;
 }
 
-void OperatingSystemLoop() {
-    switch (stateRobot) {
-        case STATE_NULL:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            break;
+void OperatingSystemLoop()
+{
+    switch (stateRobot)
+    {
+    case STATE_NULL:
+        PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+        break;
 
-        case STATE_ATTENTE:
-            timestamp = 0;
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            stateRobot = STATE_ATTENTE_EN_COURS;
-            break;
-        case STATE_ATTENTE_EN_COURS:
-            if (timestamp > 1000)
-                stateRobot = STATE_AVANCE;
-            break;
-        case STATE_AVANCE:
-            PWMSetSpeedConsigne(vitesse, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(vitesse, MOTEUR_GAUCHE);
-            SetNextRobotStateInAutomaticMode();
-            break;
-        case STATE_TOURNE_GAUCHE:
-            PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_GAUCHE);
-            SetNextRobotStateInAutomaticMode();
-            break;
-        case STATE_TOURNE_DROITE:
-            PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
-            SetNextRobotStateInAutomaticMode();
-            break;
-        case STATE_TOURNE_SUR_PLACE_GAUCHE:
-            PWMSetSpeedConsigne(VITESSE_T, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(-VITESSE_T, MOTEUR_GAUCHE);
-            SetNextRobotStateInAutomaticMode();
-            break;
-        case STATE_TOURNE_SUR_PLACE_DROITE:
-            PWMSetSpeedConsigne(-VITESSE_T, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(VITESSE_T, MOTEUR_GAUCHE);
-            stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
-            SetNextRobotStateInAutomaticMode();
-            break;
-        default:
-            stateRobot = STATE_ATTENTE;
-            break;
+    case STATE_ATTENTE:
+        timestamp = 0;
+        PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+        stateRobot = STATE_ATTENTE_EN_COURS;
+        break;
+    case STATE_ATTENTE_EN_COURS:
+        if (timestamp > 1000)
+            stateRobot = STATE_AVANCE;
+        break;
+    case STATE_AVANCE:
+        PWMSetSpeedConsigne(vitesse, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(vitesse, MOTEUR_GAUCHE);
+        SetNextRobotStateInAutomaticMode();
+        break;
+    case STATE_TOURNE_GAUCHE:
+        PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_GAUCHE);
+        SetNextRobotStateInAutomaticMode();
+        break;
+    case STATE_TOURNE_DROITE:
+        PWMSetSpeedConsigne(VITESSE_VIRAGE / 2.5, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(VITESSE_VIRAGE, MOTEUR_GAUCHE);
+        SetNextRobotStateInAutomaticMode();
+        break;
+    case STATE_TOURNE_SUR_PLACE_GAUCHE:
+        PWMSetSpeedConsigne(VITESSE_T, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(-VITESSE_T, MOTEUR_GAUCHE);
+        SetNextRobotStateInAutomaticMode();
+        break;
+    case STATE_TOURNE_SUR_PLACE_DROITE:
+        PWMSetSpeedConsigne(-VITESSE_T, MOTEUR_DROIT);
+        PWMSetSpeedConsigne(VITESSE_T, MOTEUR_GAUCHE);
+        stateRobot = STATE_TOURNE_SUR_PLACE_DROITE_EN_COURS;
+        SetNextRobotStateInAutomaticMode();
+        break;
+    default:
+        stateRobot = STATE_ATTENTE;
+        break;
     }
 }
 
-void SetNextRobotStateInAutomaticMode() {
+void SetNextRobotStateInAutomaticMode()
+{
     nextStateRobot = Operating(StateBinary());
-
-    if (nextStateRobot != lastStateRobot) {
+    if (nextStateRobot != lastStateRobot)
+    {
         lastStateRobot = stateRobot;
         stateRobot = nextStateRobot;
-    } else {
+    }
+    else
+    {
         lastStateRobot = nextStateRobot;
     }
 }
 
-char Operating(unsigned char binary) {
-    switch (binary) {
+char Operating(unsigned char binary)
+{
+    switch (binary)
+    {
 
-        case 0b00000:
-            return (STATE_AVANCE);
-            break;
-        case 0b00001:
-        case 0b00010:
-        case 0b00011:
-            return (STATE_TOURNE_GAUCHE);
-            break;
-        case 0b10000:
-        case 0b01000:
-        case 0b11000:
-            return (STATE_TOURNE_DROITE);
-            break;
-        case 0b00100:
-        case 0b00101:
-        case 0b00110:
-        case 0b00111:
-        case 0b01001:
-        case 0b01010:
-        case 0b01011:
-            return (STATE_TOURNE_SUR_PLACE_GAUCHE);
-            break;
-        case 0b10010:
-        case 0b10011:
-        case 0b10100:
-        case 0b10101:
-        case 0b10110:
-        case 0b10111:
-            return (STATE_TOURNE_SUR_PLACE_DROITE);
-            break;
-        case 0b10001:
-        case 0b01100:
-        case 0b01101:
-        case 0b01110:
-        case 0b01111:
-        case 0b11001:
-        case 0b11010:
-        case 0b11011:
-        case 0b11100:
-        case 0b11101:
-        case 0b11110:
-        case 0b11111:
-            return (STATE_TOURNE_SUR_PLACE_DROITE);
-            break;
-        default:
-            return (STATE_ATTENTE);
-            break;
+    case 0b00000:
+        return (STATE_AVANCE);
+        break;
+    case 0b00001:
+    case 0b00010:
+    case 0b00011:
+        return (STATE_TOURNE_GAUCHE);
+        break;
+    case 0b10000:
+    case 0b01000:
+    case 0b11000:
+        return (STATE_TOURNE_DROITE);
+        break;
+    case 0b00100:
+    case 0b00101:
+    case 0b00110:
+    case 0b00111:
+    case 0b01001:
+    case 0b01010:
+    case 0b01011:
+        return (STATE_TOURNE_SUR_PLACE_GAUCHE);
+        break;
+    case 0b10010:
+    case 0b10011:
+    case 0b10100:
+    case 0b10101:
+    case 0b10110:
+    case 0b10111:
+        return (STATE_TOURNE_SUR_PLACE_DROITE);
+        break;
+    case 0b10001:
+    case 0b01100:
+    case 0b01101:
+    case 0b01110:
+    case 0b01111:
+    case 0b11001:
+    case 0b11010:
+    case 0b11011:
+    case 0b11100:
+    case 0b11101:
+    case 0b11110:
+    case 0b11111:
+        return (STATE_TOURNE_SUR_PLACE_DROITE);
+        break;
+    default:
+        return (STATE_ATTENTE);
+        break;
     }
 }
 
-unsigned char StateBinary() {
+unsigned char StateBinary()
+{
     return (BinaryCapteur(robotState.distanceTelemetreExtGauche, DISTANCE_LIM_EXT) << 4 |
             BinaryCapteur(robotState.distanceTelemetreGauche, DISTANCE_LIM) << 3 |
             BinaryCapteur(robotState.distanceTelemetreCentre, DISTANCE_LIM_CENTRE) << 2 |
@@ -210,21 +217,24 @@ unsigned char StateBinary() {
             BinaryCapteur(robotState.distanceTelemetreExtDroit, DISTANCE_LIM_EXT));
 }
 
-unsigned char BinaryCapteur(float capteur, int val) {
+unsigned char BinaryCapteur(float capteur, int val)
+{
     if (capteur < val)
         return (1);
     else
         return (0);
 }
 
-void Infrarouge_Conversion() {
-    if (ADCIsConversionFinished() == 1) {
+void Infrarouge_Conversion()
+{
+    if (ADCIsConversionFinished() == 1)
+    {
         ADCClearConversionFinishedFlag();
         unsigned int *result = ADCGetResult();
-        robotState.distanceTelemetreExtGauche = 34 / (((float) result[0]) * 3.3 / 4096) - 5;
-        robotState.distanceTelemetreGauche = 34 / (((float) result[1]) * 3.3 / 4096) - 5;
-        robotState.distanceTelemetreCentre = 34 / (((float) result[2]) * 3.3 / 4096) - 5;
-        robotState.distanceTelemetreDroit = 34 / (((float) result[3]) * 3.3 / 4096) - 5;
-        robotState.distanceTelemetreExtDroit = 34 / (((float) result[4]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreExtGauche = 34 / (((float)result[0]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreGauche = 34 / (((float)result[1]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreCentre = 34 / (((float)result[2]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreDroit = 34 / (((float)result[3]) * 3.3 / 4096) - 5;
+        robotState.distanceTelemetreExtDroit = 34 / (((float)result[4]) * 3.3 / 4096) - 5;
     }
 }

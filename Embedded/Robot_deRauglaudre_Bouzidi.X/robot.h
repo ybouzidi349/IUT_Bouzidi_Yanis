@@ -21,6 +21,8 @@ struct {
         
         float distanceTelemetreCentre;
         
+        int mode;
+        
         };
     };
 } ROBOT_STATE_BITS;
