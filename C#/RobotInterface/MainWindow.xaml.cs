@@ -75,49 +75,6 @@ namespace RobotInterface
         {
             textBoxReception.Text = "";
         }
-        private void buttonStop_Click(object sender, RoutedEventArgs e)
-        {
-            sbyte[] byteList = new sbyte[2];
-            byteList[0] = 0;
-            byteList[1] = 0;
-
-            int msgFunction = 0x0040;
-
-            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
-        }
-
-        private void buttonAvance_Click(object sender, RoutedEventArgs e)
-        {
-            sbyte[] byteList = new sbyte[2];
-            byteList[0] = 20;
-            byteList[1] = 20;
-
-            int msgFunction = 0x0040;
-
-            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
-        }
-
-        private void buttonTourneGauche_Click(object sender, RoutedEventArgs e)
-        {
-            sbyte[] byteList = new sbyte[2];
-            byteList[0] = -20;
-            byteList[1] = 20;
-
-            int msgFunction = 0x0040;
-
-            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
-        }
-
-        private void buttonTourneDroite_Click(object sender, RoutedEventArgs e)
-        {
-            sbyte[] byteList = new sbyte[2];
-            byteList[0] = 20;
-            byteList[1] = -20;
-
-            int msgFunction = 0x0040;
-
-            UartEncodeAndSendMessage(msgFunction, 2, byteList.Select(b => (byte)b).ToArray());
-        }
 
         private void buttonAutomatique_Click(object sender, RoutedEventArgs e)
         {
@@ -130,6 +87,42 @@ namespace RobotInterface
             {
                 buttonAutomatique.Background = Brushes.Red;
             }
+        }
+
+        private void checkBoxLED_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            int ledNumber = int.Parse(checkBox.Tag.ToString());
+            SetLEDState(ledNumber, true);
+        }
+
+        private void checkBoxLED_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            int ledNumber = int.Parse(checkBox.Tag.ToString());
+            SetLEDState(ledNumber, false);
+        }
+
+        private void SetLEDState(int ledNumber, bool state)
+        {
+            byte[] byteList = new byte[2];
+            byteList[0] = (byte)ledNumber;
+            if (state)
+            {
+                byteList[1] = 1;
+            }
+            else
+            {
+                byteList[1] = 0;
+            }
+            int msgFunction = 0x0050;
+            UartEncodeAndSendMessage(msgFunction, 2, byteList);
+        }
+
+        private void ScrollToEnd()
+        {
+            textBoxReception.Text += Environment.NewLine;
+            textBoxReception.ScrollToEnd();
         }
 
         //////////////////////////////////////////////// RECEPTION DES MESSAGES ////////////////////////////////////////////////
@@ -167,7 +160,10 @@ namespace RobotInterface
             switch (rcvState)
             {
                 case StateReception.Waiting:
-                    rcvState = StateReception.FunctionMSB;
+                    if (c == 0xFE)
+                    {
+                        rcvState = StateReception.FunctionMSB;
+                    }
                     break;
 
                 case StateReception.FunctionMSB:
@@ -218,6 +214,7 @@ namespace RobotInterface
                     else
                     {
                         textBoxReception.Text += "Checksum error";
+                        ScrollToEnd();
                     }
 
                     rcvState = StateReception.Waiting;
@@ -302,10 +299,10 @@ namespace RobotInterface
                 {
                     case 0x0080:
                         textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
-                        textBoxReception.Text += Environment.NewLine;
+                        ScrollToEnd();
                         break;
 
-                    case 0x0040:
+                   case 0x0040:
                         textBoxValeurMoteurGauche.Text = ((sbyte)msgDecodedPayload[0]) + " %";
                         textBoxValeurMoteurDroit.Text = ((sbyte)msgDecodedPayload[1]) + " %";
                         break;
@@ -321,13 +318,11 @@ namespace RobotInterface
                     default:
                         textBoxReception.Text += Encoding.ASCII.GetString(msgDecodedPayload);
                         textBoxReception.Text += " / fonction inconnue: 0x" + msgDecodedFunction.ToString("X4");
-                        textBoxReception.Text += Environment.NewLine;
+                        ScrollToEnd();
                         break;
                 }
             }));
         }
-
-
     }
 }
 
