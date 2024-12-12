@@ -1,12 +1,14 @@
 build/default/debug/UART_Protocol.o: UART_Protocol.c UART_Protocol.h \
- CB_TX1.h robot.h PWM.h IO.h
+ CB_TX1.h CB_RX1.h PWM.h IO.h robot.h
 
 UART_Protocol.h:
 
 CB_TX1.h:
 
-robot.h:
+CB_RX1.h:
 
 PWM.h:
 
 IO.h:
+
+robot.h:

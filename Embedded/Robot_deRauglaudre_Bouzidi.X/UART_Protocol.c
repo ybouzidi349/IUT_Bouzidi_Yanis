@@ -47,7 +47,7 @@ void UartEncodeAndSendMessage(int msgFunction, int msgPayloadLength, unsigned ch
 }
 
 void UartDecodeMessage(unsigned char c) {
-    
+
     switch (rcvState) {
         case RCV_STATE_WAITING:
             if (c == 0xFE) rcvState = RCV_STATE_FUNCTION_MSB;
@@ -78,9 +78,11 @@ void UartDecodeMessage(unsigned char c) {
             break;
 
         case RCV_STATE_PAYLOAD:
-            msgDecodedPayload[msgDecodedPayloadIndex++] = c;
-            if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
-                rcvState = RCV_STATE_CHECKSUM;
+            if (msgDecodedPayloadIndex < msgDecodedPayloadLength) {
+                msgDecodedPayload[msgDecodedPayloadIndex++] = c;
+                if (msgDecodedPayloadIndex == msgDecodedPayloadLength)
+                    rcvState = RCV_STATE_CHECKSUM;
+            }
             break;
 
         case RCV_STATE_CHECKSUM:
@@ -97,8 +99,7 @@ void UartDecodeMessage(unsigned char c) {
 }
 
 void UartProcessDecodedMessage(int function, int payloadLength, unsigned char* payload) {
-    
-UartEncodeAndSendMessage(function, payloadLength, payload);
+
 
     switch (function) {
         case SET_ROBOT_STATE:
@@ -110,9 +111,17 @@ UartEncodeAndSendMessage(function, payloadLength, payload);
             break;
 
         case 0x0040:
-            PWMSetSpeedConsigne(payload[0], MOTEUR_DROIT);
-            PWMSetSpeedConsigne(payload[1], MOTEUR_GAUCHE);
+            //BUZZER = ;
+            LATFbits.LATF5 = 1;
+            PWMSetSpeedConsigne((int8_t) payload[0], MOTEUR_DROIT);
+            PWMSetSpeedConsigne((int8_t) payload[1], MOTEUR_GAUCHE);
             break;
+
+        case 0x0090:
+            LATFbits.LATF5 = 1; // Allumer le buzzer
+ // Éteindre le buzzer
+            break;
+            
 
         default:
 

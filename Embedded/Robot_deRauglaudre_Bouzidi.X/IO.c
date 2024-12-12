@@ -26,6 +26,8 @@ void InitIO() {
     _TRISA10 = 0; // LED Rouge
     _TRISH10 = 0;
     _TRISH3 = 0; // LED Verte 
+    TRISFbits.TRISF5 = 0; 
+    
 
     UnlockIO(); // On unlock les registres d'entrées/sorties, ainsi que les registres des PPS
 
