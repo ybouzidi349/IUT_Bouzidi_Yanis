@@ -5,6 +5,8 @@
 #include "PWM.h"
 #include "IO.h"
 #include "robot.h"
+#include "timer.h"
+
 
 int msgDecodedFunction = 0;
 int msgDecodedPayloadLength = 0;
@@ -103,28 +105,21 @@ void UartProcessDecodedMessage(int function, int payloadLength, unsigned char* p
 
     switch (function) {
         case SET_ROBOT_STATE:
-            //SetRobotState(msgPayload[0]);
+            tempAction = 0;
+            robotState.mode = 1;
             break;
 
         case SET_ROBOT_MANUAL_CONTROL:
-            //SetRobotAutoControlState(msgPayload[0]);
+            robotState.mode = 0;
             break;
 
-        case 0x0040:
-            //BUZZER = ;
-            LATFbits.LATF5 = 1;
+        case SET_ROBOT_MOTOR:
             PWMSetSpeedConsigne((int8_t) payload[0], MOTEUR_DROIT);
             PWMSetSpeedConsigne((int8_t) payload[1], MOTEUR_GAUCHE);
             break;
 
-        case 0x0090:
-            LATFbits.LATF5 = 1; // Allumer le buzzer
- // Éteindre le buzzer
-            break;
-            
 
         default:
-
             break;
     }
 

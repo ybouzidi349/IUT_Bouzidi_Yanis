@@ -6,10 +6,8 @@
 unsigned char ADCResultIndex = 0;
 static unsigned int ADCResult[5];
 unsigned char ADCConversionFinishedFlag;
-/****************************************************************************************************/
-// Configuration ADC
 
-/****************************************************************************************************/
+
 void InitADC1() {
     //cf. ADC Reference Manual page 47
     //Configuration en mode 12 bits mono canal ADC avec conversions successives sur 4 éentres

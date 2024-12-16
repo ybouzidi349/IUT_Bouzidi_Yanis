@@ -16,11 +16,10 @@
 #include "CB_RX1.h"
 #include "UART_Protocol.h"
 
-unsigned char stateRobot = STATE_NULL;
+unsigned char stateRobot = STATE_ATTENTE;
 unsigned char nextStateRobot = 0;
 unsigned char lastStateRobot = 0;
 float vitesse;
-unsigned int last;
 
 int main(void) {
     vitesse = VITESSE_ROBOT;
@@ -34,41 +33,78 @@ int main(void) {
     InitADC1();
     InitUART();
 
+    int counter = 0;
+    unsigned int last;
 
     while (1) {
-        /* if (BP1 != 0) {
-             stateRobot = STATE_ATTENTE;
-             tempAction = 0;
-             robotState.mode = 1;
-         }
 
-         if (BP2 != 0 || tempAction > 60000) {
-             stateRobot = STATE_NULL;
-             robotState.mode = 0;
-         }*/
+        if (BP1 != 0) {
+            tempAction = 0;
+            robotState.mode = 1;
+        }
 
+        if (BP2 != 0 || (tempAction > 60000 && robotState.mode)) {
+            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
+            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
+            robotState.mode = 0;
+        }
         for (int i = 0; i < CB_RX1_GetDataSize(); i++) {
             UartDecodeMessage(CB_RX1_Get());
         }
 
-        /* if (_millis - last > 5000) {
-             ft_send_info();
-             last = _millis;
-         }*/
+        if (_millis - last > 500) {
+            switch (counter) {
+                case 0:
+                    ft_send_telemetre();
+                    break;
+                case 1:
+                    ft_send_motor();
+                    break;
+                case 2:
+                    ft_send_mode();
+                    break;
+                case 3:
+                    ft_send_led();
+                    break;
+            }
+            last = _millis;
+            counter = (counter + 1) % 4;
+        }
 
-        ft_LED();
+        if (robotState.mode)
+            ft_LED();
     }
 }
 
-void ft_send_info() {
-    unsigned char message[9];
-    message[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
-    message[1] = (unsigned char) (robotState.distanceTelemetreGauche);
-    message[2] = (unsigned char) (robotState.distanceTelemetreCentre);
-    message[3] = (unsigned char) (robotState.distanceTelemetreDroit);
-    message[4] = (unsigned char) (robotState.distanceTelemetreExtDroit);
+void ft_send_mode(void) {
+   
+}
+                                                                                                                                                                                                                                                                                                                                                                                            
+void ft_send_telemetre() {
+    unsigned char telemetre[5];
+    telemetre[0] = (unsigned char) (robotState.distanceTelemetreExtGauche);
+    telemetre[1] = (unsigned char) (robotState.distanceTelemetreGauche);
+    telemetre[2] = (unsigned char) (robotState.distanceTelemetreCentre);
+    telemetre[3] = (unsigned char) (robotState.distanceTelemetreDroit);
+    telemetre[4] = (unsigned char) (robotState.distanceTelemetreExtDroit);
+    UartEncodeAndSendMessage(0x0030, 5, telemetre);
+}
 
-    UartEncodeAndSendMessage(0x0030, 5, message);
+void ft_send_motor() {
+    unsigned char motor[2];
+    motor[0] = robotState.vitesseGaucheCommandeCourante;
+    motor[1] = robotState.vitesseDroiteCommandeCourante;
+    UartEncodeAndSendMessage(0x0040, 2, motor);
+}
+
+void ft_send_led(void) {
+    unsigned char led[5];
+    led[0] = LED_BLANCHE_1;
+    led[1] = LED_BLEUE_1;
+    led[2] = LED_ORANGE_1;
+    led[3] = LED_ROUGE_1;
+    led[4] = LED_VERTE_1;
+    UartEncodeAndSendMessage(0x0020, 5, led);
 }
 
 void ft_LED(void) {
@@ -84,11 +120,6 @@ void ft_LED(void) {
 
 void OperatingSystemLoop() {
     switch (stateRobot) {
-        case STATE_NULL:
-            PWMSetSpeedConsigne(0, MOTEUR_DROIT);
-            PWMSetSpeedConsigne(0, MOTEUR_GAUCHE);
-            break;
-
         case STATE_ATTENTE:
             timestamp = 0;
             PWMSetSpeedConsigne(0, MOTEUR_DROIT);
@@ -220,3 +251,4 @@ void Infrarouge_Conversion() {
         robotState.distanceTelemetreExtDroit = 34 / (((float) result[4]) * 3.3 / 4096) - 5;
     }
 }
+

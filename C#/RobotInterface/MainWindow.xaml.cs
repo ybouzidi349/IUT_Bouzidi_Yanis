@@ -47,7 +47,7 @@ namespace RobotInterface
         public MainWindow()
         {
             InitializeComponent();
-            serialPort1 = new ExtendedSerialPort("COM4", 115200, Parity.None, 8, StopBits.One);
+            serialPort1 = new ExtendedSerialPort("COM3", 115200, Parity.None, 8, StopBits.One);
             serialPort1.DataReceived += SerialPort1_DataReceived;
             serialPort1.Open();
 
@@ -302,10 +302,7 @@ namespace RobotInterface
                         ScrollToEnd();
                         break;
 
-                   case 0x0040:
-                        textBoxValeurMoteurGauche.Text = ((sbyte)msgDecodedPayload[0]) + " %";
-                        textBoxValeurMoteurDroit.Text = ((sbyte)msgDecodedPayload[1]) + " %";
-                        break;
+                    
 
                     case 0x0030:
                         textBoxDistanceTelemetreExtGauche.Text = msgDecodedPayload[0] + " cm";
@@ -313,6 +310,19 @@ namespace RobotInterface
                         textBoxDistanceTelemetreCentre.Text = msgDecodedPayload[2] + " cm";
                         textBoxDistanceTelemetreDroit.Text = msgDecodedPayload[3] + " cm";
                         textBoxDistanceTelemetreExtDroit.Text = msgDecodedPayload[4] + " cm";
+                        break;
+
+                    case 0x0040:
+                        textBoxValeurMoteurGauche.Text = ((sbyte)msgDecodedPayload[0]) + " %";
+                        textBoxValeurMoteurDroit.Text = ((sbyte)msgDecodedPayload[1]) + " %";
+                        break;
+
+                    case 0x0051:
+                        buttonAutomatique.Background = Brushes.Green;
+                        break;
+
+                    case 0x0052:
+                        buttonAutomatique.Background = Brushes.Red;
                         break;
 
                     default:

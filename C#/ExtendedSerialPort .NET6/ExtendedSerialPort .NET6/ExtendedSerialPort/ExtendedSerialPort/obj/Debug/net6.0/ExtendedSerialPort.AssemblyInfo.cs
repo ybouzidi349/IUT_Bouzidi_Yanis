@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExtendedSerialPort")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddcb78b86febd56926730065c77f754ba83a2b19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92b052f3a24fff730248f3461cd544e7a23fd48e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExtendedSerialPort")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExtendedSerialPort")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

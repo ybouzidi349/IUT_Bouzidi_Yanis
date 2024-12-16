@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {}
+    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {}
   },
   "projects": {
-    "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
+    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
+        "projectUniqueName": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
         "projectName": "ExtendedSerialPort",
-        "projectPath": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
-        "packagesPath": "C:\\Users\\E306-PC5\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\obj\\",
+        "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
+        "packagesPath": "C:\\Users\\E306-PC4\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\E306-PC5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\E306-PC4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -70,6 +70,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -79,20 +93,20 @@
         }
       }
     },
-    "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {
+    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
+        "projectUniqueName": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
         "projectName": "RobotInterface",
-        "projectPath": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
-        "packagesPath": "C:\\Users\\E306-PC5\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\obj\\",
+        "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
+        "packagesPath": "C:\\Users\\E306-PC4\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\E306-PC5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\E306-PC4\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -107,8 +121,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
-                "projectPath": "C:\\Users\\E306-PC5\\Documents\\GitHub\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj"
+              "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
+                "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj"
               }
             }
           }
@@ -139,6 +153,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.36, 6.0.36]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

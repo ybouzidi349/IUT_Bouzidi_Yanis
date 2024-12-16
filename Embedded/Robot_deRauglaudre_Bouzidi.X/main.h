@@ -10,6 +10,11 @@ unsigned char BinaryCapteur(float capteur, int val);
 unsigned char StateBinary(void);
 void ft_LED(void);
 void ft_send_info(void);
+void ft_send_telemetre(void);
+void ft_send_motor(void);
+void ft_send_mode(void);
+void ft_send_led(void);
+
 
 
  /////////////////////MODIF/////////////////////
@@ -17,7 +22,7 @@ void ft_send_info(void);
 #define FREQUENCE_TIMER_1 50
 #define FREQUENCE_TIMER_4 1000
 
-#define VITESSE_ROBOT 30
+#define VITESSE_ROBOT 20
 #define VITESSE_T 19
 #define VITESSE_VIRAGE 21
 
@@ -44,7 +49,6 @@ void ft_send_info(void);
 #define STATE_ARRET_EN_COURS 13
 #define STATE_RECULE 14
 #define STATE_RECULE_EN_COURS 15
-#define STATE_NULL 16
 
 #endif
 
