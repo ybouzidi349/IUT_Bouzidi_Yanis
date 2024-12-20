@@ -115,7 +115,7 @@ namespace RobotInterface
             {
                 byteList[1] = 0;
             }
-            int msgFunction = 0x0050;
+            int msgFunction = 0x0020;
             UartEncodeAndSendMessage(msgFunction, 2, byteList);
         }
 

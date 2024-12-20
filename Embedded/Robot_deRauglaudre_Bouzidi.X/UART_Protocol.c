@@ -117,6 +117,15 @@ void UartProcessDecodedMessage(int function, int payloadLength, unsigned char* p
             PWMSetSpeedConsigne((int8_t) payload[0], MOTEUR_DROIT);
             PWMSetSpeedConsigne((int8_t) payload[1], MOTEUR_GAUCHE);
             break;
+        case SET_ROBOT_LED:
+            if (!robotState.mode) {
+                LED_BLANCHE_1 = payload[0];
+                LED_BLEUE_1 = payload[1];
+                LED_ORANGE_1 = payload[2];
+                LED_ROUGE_1 = payload[3];
+                LED_VERTE_1 = payload[4];
+            }
+            break;
 
 
         default:
