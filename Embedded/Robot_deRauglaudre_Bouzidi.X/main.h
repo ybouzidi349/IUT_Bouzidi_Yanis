@@ -1,4 +1,4 @@
-
+    
 #ifndef MAIN_H
 #define	MAIN_H
 
@@ -26,8 +26,8 @@ void ft_send_led(void);
 #define VITESSE_T 19
 #define VITESSE_VIRAGE 21
 
-#define DISTANCE_LIM 38
-#define DISTANCE_LIM_CENTRE 31
+#define DISTANCE_LIM 31
+#define DISTANCE_LIM_CENTRE 38
 #define DISTANCE_LIM_EXT 24
 
 

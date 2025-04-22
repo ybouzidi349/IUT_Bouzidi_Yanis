@@ -25,8 +25,13 @@ void InitIO() {
     _TRISJ11 = 0;
     _TRISA10 = 0; // LED Rouge
     _TRISH10 = 0;
-    _TRISH3 = 0; // LED Verte  
+    _TRISH3 = 0; // LED Verte
     
+    _QEA2R = 97; //assign QEI A to pin RP97
+    _QEB2R = 96; //assign QEI B to pin RP96
+    _QEA1R = 70; //assign QEI A to pin RP70
+    _QEB1R = 69; //assign QEI B to pin RP69
+
 
     UnlockIO(); // On unlock les registres d'entrées/sorties, ainsi que les registres des PPS
 
