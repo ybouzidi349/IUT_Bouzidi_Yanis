@@ -11,13 +11,15 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ExtendedSerialPort")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("RobotInterface")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+525ee2bd2667da7356968036c92cc5963777699a")]
-[assembly: System.Reflection.AssemblyProductAttribute("ExtendedSerialPort")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ExtendedSerialPort")]
+[assembly: System.Reflection.AssemblyProductAttribute("RobotInterface")]
+[assembly: System.Reflection.AssemblyTitleAttribute("RobotInterface")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
+[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.
 

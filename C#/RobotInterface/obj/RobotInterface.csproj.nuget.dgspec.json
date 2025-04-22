@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {}
+    "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\RobotInterface\\RobotInterface.csproj": {}
   },
   "projects": {
-    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
+    "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
+        "projectUniqueName": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
         "projectName": "ExtendedSerialPort",
-        "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
-        "packagesPath": "C:\\Users\\E306-PC4\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\obj\\",
+        "projectPath": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj",
+        "packagesPath": "C:\\Users\\Bosco drg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\E306-PC4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bosco drg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,7 +43,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -70,43 +71,29 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj": {
+    "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\RobotInterface\\RobotInterface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
+        "projectUniqueName": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\RobotInterface\\RobotInterface.csproj",
         "projectName": "RobotInterface",
-        "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
-        "packagesPath": "C:\\Users\\E306-PC4\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\obj\\",
+        "projectPath": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\RobotInterface\\RobotInterface.csproj",
+        "packagesPath": "C:\\Users\\Bosco drg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\RobotInterface\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\E306-PC4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bosco drg\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -115,14 +102,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
-                "projectPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj"
+              "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj": {
+                "projectPath": "C:\\Users\\Bosco drg\\Desktop\\Robot_GEII\\C#\\ExtendedSerialPort .NET6\\ExtendedSerialPort .NET6\\ExtendedSerialPort\\ExtendedSerialPort\\ExtendedSerialPort.csproj"
               }
             }
           }
@@ -135,7 +123,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -153,24 +141,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.36, 6.0.36]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.36, 6.0.36]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -179,7 +149,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

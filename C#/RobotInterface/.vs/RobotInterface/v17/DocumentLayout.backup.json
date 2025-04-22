@@ -42,7 +42,11 @@
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAADcBAAAAAAAAAAAAACYBAAAIAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAFMAAAAAAAAAAAAswHYAAAAHAAAAAAAAAA==",
+>>>>>>> 453784de50ed2a911c1d6c181e288caad6a897f6
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T15:23:46.21Z",
               "EditorCaption": ""
