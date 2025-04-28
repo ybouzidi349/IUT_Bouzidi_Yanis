@@ -6,6 +6,7 @@
 #include "ChipConfig.h"
 #include "robot.h"
 #include "main.h"
+#include "QEI.h"
 
 unsigned char toggle = 0;
 unsigned long timestamp = 0;
@@ -56,6 +57,7 @@ void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void)
 {
     IFS0bits.T1IF = 0;
     PWMUpdateSpeed();   
+    SendPositionData();
 }
 
 void SetFreqTimer1(float freq)

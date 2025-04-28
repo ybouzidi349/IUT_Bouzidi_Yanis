@@ -42,11 +42,7 @@
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-<<<<<<< HEAD
-              "ViewState": "AgIAADcBAAAAAAAAAAAAACYBAAAIAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAFMAAAAAAAAAAAAswHYAAAAHAAAAAAAAAA==",
->>>>>>> 453784de50ed2a911c1d6c181e288caad6a897f6
+              "ViewState": "AgIAAHQAAAAAAAAAAAAiwIYAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T15:23:46.21Z",
               "EditorCaption": ""
@@ -57,11 +53,10 @@
               "Title": "SerialPort.cs",
               "DocumentMoniker": "C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
-              "ToolTip": "C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs [Lecture seule]",
-              "RelativeToolTip": "..\\..\\..\\..\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs [Lecture seule]",
+              "ToolTip": "C:\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\Table2\\AppData\\Local\\Temp\\.vsdbgsrc\\dcb7313e2aa68b003eb05c877e03d1968ec7658284537e2df5ba38223a255df4\\SerialPort.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T13:32:51.803Z",
-              "EditorCaption": " [Lecture seule]"
+              "WhenOpened": "2024-11-25T13:32:51.803Z"
             }
           ]
         }

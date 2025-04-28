@@ -19,7 +19,7 @@ void ft_send_led(void);
 
  /////////////////////MODIF/////////////////////
  
-#define FREQUENCE_TIMER_1 50
+#define FREQUENCE_TIMER_1 250
 #define FREQUENCE_TIMER_4 1000
 
 #define VITESSE_ROBOT 20
