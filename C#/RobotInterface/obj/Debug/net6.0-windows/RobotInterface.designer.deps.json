@@ -6,6 +6,8 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.0": {},
       "runtime.linux-arm.runtime.native.System.IO.Ports/8.0.0": {
         "runtimeTargets": {
           "runtimes/linux-arm/native/libSystem.IO.Ports.Native.so": {
@@ -60,12 +62,39 @@
           }
         }
       },
+      "SciChart/6.6.0.26505": {
+        "runtime": {
+          "lib/netcoreapp3.1/SciChart.Charting.dll": {
+            "assemblyVersion": "6.6.0.26505",
+            "fileVersion": "6.6.0.26505"
+          },
+          "lib/netcoreapp3.1/SciChart.Core.dll": {
+            "assemblyVersion": "6.6.0.26505",
+            "fileVersion": "6.6.0.26505"
+          },
+          "lib/netcoreapp3.1/SciChart.Data.dll": {
+            "assemblyVersion": "6.6.0.26505",
+            "fileVersion": "6.6.0.26505"
+          },
+          "lib/netcoreapp3.1/SciChart.Drawing.dll": {
+            "assemblyVersion": "6.6.0.26505",
+            "fileVersion": "6.6.0.26505"
+          }
+        }
+      },
       "System.CodeDom/8.0.0": {
         "runtime": {
           "lib/net6.0/System.CodeDom.dll": {
             "assemblyVersion": "8.0.0.0",
             "fileVersion": "8.0.23.53103"
           }
+        }
+      },
+      "System.Collections/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
         }
       },
       "System.IO.Ports/8.0.0": {
@@ -111,10 +140,30 @@
             "fileVersion": "8.0.23.53103"
           }
         }
+      },
+      "System.Runtime/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
       }
     }
   },
   "libraries": {
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
     "runtime.linux-arm.runtime.native.System.IO.Ports/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -157,12 +206,26 @@
       "path": "runtime.osx-x64.runtime.native.system.io.ports/8.0.0",
       "hashPath": "runtime.osx-x64.runtime.native.system.io.ports.8.0.0.nupkg.sha512"
     },
+    "SciChart/6.6.0.26505": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zzVsE0mX9fAVOlH3JarzBXa5NRFs9BTfLYShKvaFSOx/XOpEbuQlQn5bgn7z2axSyyU1Qgjnmp1Q0FkP1Vc/WA==",
+      "path": "scichart/6.6.0.26505",
+      "hashPath": "scichart.6.6.0.26505.nupkg.sha512"
+    },
     "System.CodeDom/8.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-WTlRjL6KWIMr/pAaq3rYqh0TJlzpouaQ/W1eelssHgtlwHAH25jXTkUphTYx9HaIIf7XA6qs/0+YhtLEQRkJ+Q==",
       "path": "system.codedom/8.0.0",
       "hashPath": "system.codedom.8.0.0.nupkg.sha512"
+    },
+    "System.Collections/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
+      "path": "system.collections/4.3.0",
+      "hashPath": "system.collections.4.3.0.nupkg.sha512"
     },
     "System.IO.Ports/8.0.0": {
       "type": "package",
@@ -177,6 +240,13 @@
       "sha512": "sha512-jrK22i5LRzxZCfGb+tGmke2VH7oE0DvcDlJ1HAKYU8cPmD8XnpUT0bYn2Gy98GEhGjtfbR/sxKTVb+dE770pfA==",
       "path": "system.management/8.0.0",
       "hashPath": "system.management.8.0.0.nupkg.sha512"
+    },
+    "System.Runtime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "path": "system.runtime/4.3.0",
+      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
     }
   }
 }

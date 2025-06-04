@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RobotInterface"
+        xmlns:oscillo="clr-namespace:WpfOscilloscopeControl;assembly=WpfOscilloscopeControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800" Background="#FFFAFAFA">
     <Grid>
@@ -86,4 +87,6 @@
             <Button x:Name="buttonAutomatique" Content="AUTOMATIQUE" Width="120" Margin="5" Click="buttonAutomatique_Click" Background="Red"/>
         </StackPanel>
     </Grid>
+
+    <oscillo:WpfOscilloscope x:Name="oscilloSpeed"/>
 </Window>

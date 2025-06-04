@@ -9,6 +9,8 @@
 #include "UART_Protocol.h"
 #include "Utilities.h"
 
+
+
 float QeiDroitPosition_T_1;
 float QeiDroitPosition;
 float QeiGauchePosition_T_1;
@@ -90,5 +92,8 @@ void SendPositionData() {
     getBytesFromFloat(positionPayload, 12, (float) (robotState.angleRadianFromOdometry));
     getBytesFromFloat(positionPayload, 16, (float) (robotState.vitesseLineaireFromOdometry));
     getBytesFromFloat(positionPayload, 20, (float) (robotState.vitesseAngulaireFromOdometry));
-    UartEncodeAndSendMessage(POSITION_DATA, 24, positionPayload);
+    getBytesFromFloat(positionPayload, 24, (float) (robotState.timeFrom));
+    getBytesFromFloat(positionPayload, 28, (float) (robotState.vitesseDroitFromOdometry));
+    getBytesFromFloat(positionPayload, 32, (float) (robotState.vitesseGaucheFromOdometry));
+    UartEncodeAndSendMessage(POSITION_DATA, 36, positionPayload)
 }
