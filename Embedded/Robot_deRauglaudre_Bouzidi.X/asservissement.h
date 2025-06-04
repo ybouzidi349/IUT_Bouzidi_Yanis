@@ -1,38 +1,27 @@
-/* 
- * File:   asservissement.h
- * Author: E306_PC2
- *
- * Created on 5 mai 2025, 16:21
- */
+#ifndef PID_H
+#define	PID_H
 
-#ifndef ASSERVISSEMENT_H
-#define	ASSERVISSEMENT_H
+typedef struct _PidCorrector
+{
+    float Kp;
+    float Ki;
+    float Kd;
+    float erreurProportionelleMax;
+    float erreurIntegraleMax;
+    float erreurDeriveeMax;
+    float erreurIntegrale;
+    float epsilon_1;
+    float erreur;
+    //For Debug only
+    float corrP;
+    float corrI;
+    float corrD;
+}PidCorrector;
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
+void sendPID(int codeFunction);
+void sendAsserv(int codeFunction);
+void SetupPidAsservissement(volatile PidCorrector* PidCorr, float Kp, float Ki, float Kd, float proportionelleMax, float integralMax, float deriveeMax);
+void UpdateAsservissement();
 
-    typedef struct _PidCorrector {
-        double Kp;
-        double Ki;
-        double Kd;
-        double erreurProportionelleMax;
-        double erreurIntegraleMax;
-        double erreurDeriveeMax;
-        double erreurIntegrale;
-        double epsilon_1;
-        double erreur;
-        //For Debug only
-        double corrP;
-        double corrI;
-        double corrD;
-    } PidCorrector;
-
-void SetupPidAsservissement(volatile PidCorrector* PidCorr, double Kp, double Ki, double Kd, double pro);
-    
-#ifdef	__cplusplus
-}
-#endif
-
-#endif	/* ASSERVISSEMENT_H */
+#endif	/* PID_H */
 

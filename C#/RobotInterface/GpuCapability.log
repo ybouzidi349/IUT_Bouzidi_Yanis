@@ -16,7 +16,7 @@ Examining Graphics Adapter: Intel(R) UHD Graphics 770
    Rank: 3000128 Points
 
 Examining Graphics Adapter: NVIDIA T1000 8GB
-   VRAM: 3072Mb
+   VRAM: 8017Mb
    DeviceId: 8176
 
    Visual Xccelerator Engine Direct3D9 Compatibility
@@ -27,7 +27,7 @@ Examining Graphics Adapter: NVIDIA T1000 8GB
       Trying to create Direct3D9Ex Device (WPF Compatibility)... FAILED
       Trying to create Direct3D11 Device... SUCCESS
 
-   Rank: 3003072 Points
+   Rank: 3008017 Points
 
 Examining Graphics Adapter: Microsoft Basic Render Driver
    VRAM: 0Mb

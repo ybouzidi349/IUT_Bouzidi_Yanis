@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\robotinterface.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:robotinterface.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{91E86AF8-D824-4C7A-B9B8-F43B41756357}|RobotInterface.csproj|c:\\github\\iut_bouzidi_yanis\\c#\\robotinterface\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,12 +26,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RobotInterface",
+              "DocumentIndex": 1,
+              "Title": "RobotInterface.csproj",
               "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
               "RelativeDocumentMoniker": "RobotInterface.csproj",
               "ToolTip": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\RobotInterface.csproj",
@@ -43,7 +43,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -51,12 +51,11 @@
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAAAAAABAsDKwcPUYwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T07:26:46.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T07:26:46.249Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Github\\IUT_Bouzidi_Yanis\\C#\\RobotInterface\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-13T15:23:46.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-13T15:23:46.21Z"
             }
           ]
         }
